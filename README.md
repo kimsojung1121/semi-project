@@ -1,4 +1,4 @@
-## I'MO CAKE
+## I'MO CAKE 🍰
 #### : 레터링 케이크 쇼핑몰 사이트
 
 
@@ -19,9 +19,10 @@
 
 - 개발 환경
   - JDK 14.0
+  - Eclipse
   - Apache-tomcat 9.0
   - Oracle SQL Developer
-  - Eclipse
+  - [SVN](https://www.itwill.xyz/!/#sample4)
 
 - 담당 업무
   - 마이페이지, 관리자 페이지
