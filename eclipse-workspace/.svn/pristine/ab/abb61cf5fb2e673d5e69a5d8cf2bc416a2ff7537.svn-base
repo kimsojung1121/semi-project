@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/* CSS Document */
+#container{margin-top: 120px;}
+#container_sub{margin-top: 200px;}
+.member_wrap{width:593px; margin:20px auto 40px auto;}
+.member_pwd_wrap{margin:20px auto 40px auto;}
+.member_cont{padding:70px 60px; border:1px solid #dbdbdb;}
+.member_cont h3{font-weight:normal; font-size:18px; color:#222222;}
+.member_cont h3 + p{padding:5px 0 8px 0; color:#bebebc;}
+.login_input, .certify_confirm_input{border-top:1px solid #dbdbdb;}
+.wake_base_box .login_input{border-top:none 0;}
+.member_tit h2 {
+    font-size: 28px;
+    margin: 0 0 20px 0;
+}
+
+/*.join_base_wrap .btn_center_box,
+.login_input + .btn_center_box,*/
+.member_cont .btn_center_box,
+.member_warning + .btn_center_box{margin:35px 0 0 0;}
+.join_ok_box .btn_center_box{padding:30px 0 0 0; border-top:1px solid #dbdbdb;}
+
+/* 아이디 찾기 */
+.find_id_box .find_id_sec h3{font-weight:normal; font-size:18px; color:#222222;}
+.find_id_sec > p{color:#985f53;}
+.find_id_box .btn_member_sec{margin:20px 0 0 0; border-top: 1px solid #dbdbdb;}
+.find_id_box .btn_member_sec ul{overflow:hidden; margin:20px 0 0 0; text-align:center; font-size:0;}
+.find_id_box .btn_member_sec li{display:inline-block; margin:0 0 0 10px;}
+.find_id_box .btn_member_sec li:first-child{margin:0;}
+
+/* 상단 바 */
+.top_bar{overflow:hidden; border-bottom:1px solid #999999;}
+.top_bar ol{float:right; line-height: 62px; padding-right: 30px;}
+.top_bar ol li{float:left; font-size:14px; color:#d1d1d1;}
+.top_bar .page_on{
+    color:#985f53;
+}
+.top_bar li span{font-size:16px; font-weight:bold;}
+.top_bar li span > img{padding:0 14px; vertical-align: -1px;}

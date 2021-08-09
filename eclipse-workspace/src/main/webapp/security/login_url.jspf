@@ -1,0 +1,28 @@
+<%@page import="dto.UsersDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- 로그인 여부 확인 페이지 - 비로그인인 경우 로그인 페이지로 이동 후 현재 요청 페이지(url) 저장 --%>  
+<%
+	//세션에 저장된 권한 관련 정보를 반환받아 저장
+	UsersDTO loginUsers=(UsersDTO)session.getAttribute("loginUsers");
+	
+	if(loginUsers==null) {//비로그인 사용자인 경우
+		String requestURI=request.getRequestURI();
+
+		String queryString=request.getQueryString();
+		
+		if(queryString==null || queryString.equals("")) {
+			queryString="";
+		} else {
+			queryString="?"+queryString;
+		}
+		
+		//세션에 현재 요청 페이지의 URL 주소를 속성값으로 저장
+		session.setAttribute("url", requestURI+queryString);
+		
+		out.println("<script type='text/javascript'>");
+		out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=users&work=users_login';");
+		out.println("</script>");
+		return;
+	}
+%>

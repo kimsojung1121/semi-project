@@ -1,0 +1,92 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<link type="text/css" rel="stylesheet" href="css/users_login_find.css"/>
+
+<div id="container">
+        <div id="contents">
+        <!-- 본문 시작 -->
+		 <div class="location_wrap">
+                <div class="location_cont">
+                    <em><a href="#" class="local_home">HOME</a> > 비밀번호 찾기</em>
+                </div>
+            </div>
+            <!-- //location_wrap -->
+
+            <div class="sub_content">
+
+                <!-- //side_cont -->
+<div class="content_box">
+	<form name="formFind" id="formFind" action="../member/user_certification.php" method="post">
+		<div class="member_wrap">
+			<div class="member_tit">
+				<h2>비밀번호 찾기</h2>
+			</div>
+			<div class="member_cont">
+				<div class="find_password_box">
+					<h3>아이디 입력</h3>
+					<p>비밀번호를 찾고자 하는 아이디를 입력해 주세요.</p>
+					<div class="login_input">
+						<div class="member_warning">
+							<input type="text" id="memberId" name="memberId" placeholder="아이디">
+							<p class="info_again">아이디를 모르시나요? 
+							<a href="<%=request.getContextPath() %>/home.jsp?workgroup=users&work=users_find_id">아이디 찾기</a></p>
+							<p class="dn" id="errorMessage"></p>
+						</div>
+						<div class="btn_center_box">
+							<button type="submit" class="btn_member_next">다음</button>
+						</div>
+					</div>
+				</div>
+				<!-- //find_password_box -->
+			</div>
+			<!-- //member_cont -->
+		</div>
+		<!-- //member_wrap -->
+	</form>
+</div>
+<!-- //content_box -->
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('input').keyup(function () {
+			$('#errorMessage', 'form').addClass('dn');
+		});
+
+		$('#formFind button[type="submit"]').click(function () {
+			if ($('#formFind').valid() == false) return false;
+		});
+
+		$('#formFind').validate({
+			dialog: false,
+			rules: {
+				memberId: {
+					required: true
+				}
+			},
+			messages: {
+				memberId: {
+					required: "아이디를 입력해주세요"
+				}
+			}, submitHandler: function (form) {
+				var data = $(form).serializeArray();
+				data.push({name: "mode", value: "find_member"});
+
+				$.post('../member/find_ps.php', data).done(function (data, textStatus, jqXHR) {
+					console.log('gd_member ajax', data, textStatus, jqXHR);
+					var code = data.code;
+					var message = data.message;
+					if (_.isUndefined(code) && _.isUndefined(message)) {
+						form.submit();
+					} else {
+						$('#errorMessage', form).removeClass('dn').html('<strong>' + message + '</strong>');
+					}
+				});
+			}
+		});
+	});
+</script>
+            </div>
+            <!-- //sub_content -->
+        </div>
+        <!-- //본문 끝 contents -->
+    </div>
+    <!-- //container -->

@@ -1,0 +1,144 @@
+<%@page import="dao.UsersDAO"%>
+<%@page import="dto.UsersDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%-- 로그인 상태의 관리자만 접근 가능 --%>
+<%@include file="/security/admin_check.jspf"%>
+
+<%
+	String searchId=request.getParameter("searchId");
+	if(searchId==null) {
+		searchId="";
+	}
+	
+	String searchName=request.getParameter("searchName");
+	if(searchName==null) {
+		searchName="";
+	}
+	
+	//보류 - 페이징 기능 미구현
+	//int totalSearchId=UsersDAO.getDAO().selectIdCount(searchId);
+	
+	List<UsersDTO> userList=UsersDAO.getDAO().selectUserList(searchId,searchName); 
+%>
+
+<%-- CSS --%>
+<link type="text/css" rel="stylesheet" href="css/admin.css"/>
+
+<%-- 회원 정보 검색 기능 --%>
+<div class="search_user">
+	<%-- ID 검색 --%>
+	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=users" method="post" style="display: inline-block;">
+		<input type="text" placeholder="회원 ID" onfocus="this.placeholder=''" onblur="this.placeholder='회원 ID'" 
+		name="searchId">
+		<%-- <button type="button" id="searchIdBtn">검색</button> --%>
+		<button type="submit">검색</button>
+	</form>
+	<%-- 이름 검색 --%>
+	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=users" method="post" style="display: inline-block;">
+		<input type="text" placeholder="회원 이름" onfocus="this.placeholder=''" onblur="this.placeholder='회원 이름'" 
+		name="searchName">
+		<%-- <button type="button" id="searchNameBtn">검색</button> --%>
+		<button type="submit">검색</button>
+	</form>
+	<!-- 메세지 출력 -->
+	<div id="searchMsg" style="display: inline-block; color:red;"></div>
+</div>
+
+
+<form name="userForm" class="baseContent" id="userForm">
+<table class="user_table">
+	<tr>
+		<th><input type="checkbox" id="allCheck"></th>
+		<th>아이디</th>
+		<th>이름</th>
+		<th>이메일</th>
+		<th>전화번호</th>
+		<th>생년월일</th>
+		<th>주소</th>
+		<th>가입날짜</th>
+		<th>상태</th>
+	</tr>
+	<% for(UsersDTO user:userList) { %>
+	<tr>
+		<td>
+			<% if(user.getStatus()==9) { %>
+				관리자
+			<% } else { %>
+				<input type="checkbox" name="checkId" value="<%=user.getId()%>" class="check">
+			<% } %>
+		</td>
+		<td><%=user.getId() %></td>
+		<td><%=user.getName() %></td>
+		<td><%=user.getEmail() %></td>
+		<td><%=user.getPhone() %></td>
+		<td><%=user.getBirthday().substring(0, 10) %></td>
+		<td>
+			[<%=user.getZipcode() %>]<%=user.getAddress1() %> <%=user.getAddress2() %>
+		</td>
+		<td><%=user.getJoindate() %></td>
+		<td>
+			<% if(user.getStatus()==0) { %> 
+				탈퇴회원 
+			<%} %>
+			<% if(user.getStatus()==1) { %> 
+				일반회원 
+			<%} %>
+			<% if(user.getStatus()==9) { %> 
+				관리자 
+			<%} %>
+		</td>	
+	</tr>
+	<% } %>
+</table>
+<div><button type="button" class="btn" id="removeBtn">선택회원 삭제</button></div>
+<div id="message"></div>
+
+</form>
+
+
+<script type="text/javascript">
+$("#allCheck").change(function() {
+		if($(this).is(":checked")) {
+			$(".check").prop("checked",true);
+		} else {
+			$(".check").prop("checked",false);
+		}
+});
+
+$("#removeBtn").click(function() {
+	if($(".check").filter(":checked").length==0) {
+		$("#message").text("회원을 선택해 주세요.");
+		return;
+	}
+	
+	$("#userForm").attr("method", "post");
+	$("#userForm").attr("action", 
+		"<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=user_remove_action");
+	$("#userForm").submit();
+});
+
+<!--
+$("#searchIdBtn").click(function() {
+	if($("#searchId").length==0) {
+		$("#searchMsg").text("ID를 입력해 주세요.");
+		return false;
+	} else {
+		$("#searchIdBtn").submit();
+		return true;
+	}
+});
+
+$("#searchNameBtn").click(function() {
+	if($("#searchName").length==0) {
+		$("#searchMsg").text("이름을 입력해 주세요.");
+		return;
+	}
+	$("#searchNameBtn").submit();
+});
+-->
+
+</script>
+	

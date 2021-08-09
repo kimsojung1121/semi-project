@@ -1,0 +1,328 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.UsersDTO;
+
+public class UsersDAO extends JdbcDAO {
+	public static UsersDAO _dao;
+	
+	public UsersDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	static {
+		_dao=new UsersDAO();
+	}
+	
+	public static UsersDAO getDAO() {
+		return _dao;
+	}
+	
+	//회원정보를 전달받아 USERS 테이블에 삽입하여 저장하고 삽입행의 갯수를 반환하는 메소드 - 신규회원가입
+	public int insertUsers(UsersDTO users) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rows=0;
+		try {
+			con=getConnection();
+			
+			String sql="insert into users values(?,?,?,?,?,?,?,?,?,sysdate,1)";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, users.getId());
+			pstmt.setString(2, users.getPw());
+			pstmt.setString(3, users.getName());
+			pstmt.setString(4, users.getEmail());
+			pstmt.setString(5, users.getPhone());
+			pstmt.setString(6, users.getBirthday());
+			pstmt.setString(7, users.getZipcode());
+			pstmt.setString(8, users.getAddress1());
+			pstmt.setString(9, users.getAddress2());
+
+			rows=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("[에러]insertUsers() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt);
+		}
+		return rows;
+	}
+	
+	//회원정보를 전달받아 USERS 테이블에 저장된 회원정보를 변경하고 변경행의 개수를 반환하는 메소드 - 회원정보수정
+	public int updateUsers(UsersDTO users) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rows=0;
+		try {
+			con=getConnection();
+			
+			String sql="update users set pw=?,name=?,email=?,phone=?,birthday=?,zipcode=?,address1=?,address2=? where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, users.getPw());
+			pstmt.setString(2, users.getName());
+			pstmt.setString(3, users.getEmail());
+			pstmt.setString(4, users.getPhone());
+			pstmt.setString(5, users.getBirthday());
+			pstmt.setString(6, users.getZipcode());
+			pstmt.setString(7, users.getAddress1());
+			pstmt.setString(8, users.getAddress2());
+			pstmt.setString(9, users.getId());
+			
+			rows=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("[에러]updateUsers() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt);
+		}
+		return rows;
+	}
+	
+	//아이디를 전달받아 USERS 테이블에 저장된 해당 회원상태를 0(탈퇴)으로 변경하고 변경행의 개수를 반환하는 메소드 - 회원탈퇴
+	public int updateUsersStatus(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		int rows=0;
+		try {
+			con=getConnection();
+			
+			String sql="update users set status=0 where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rows=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("[에러]updateUsersStatus() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt);
+		}
+		return rows;
+	}
+	
+	//아이디를 전달받아 USERS 테이블에 저장된 회원정보를 검색하여 반환하는 메소드 - 회원정보검색
+	public UsersDTO selectUsersId(String id) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		UsersDTO users=null;
+		try {
+			con=getConnection();
+			
+			String sql="select * from users where id=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				users=new UsersDTO();
+				users.setId(rs.getString("id"));
+				users.setPw(rs.getString("pw"));
+				users.setName(rs.getString("name"));
+				users.setEmail(rs.getString("email"));
+				users.setPhone(rs.getString("phone"));
+				users.setBirthday(rs.getString("birthday"));
+				users.setZipcode(rs.getString("zipcode"));
+				users.setAddress1(rs.getString("address1"));
+				users.setAddress2(rs.getString("address2"));
+				users.setJoindate(rs.getString("joindate"));
+				users.setStatus(rs.getInt("status"));
+			}		
+		} catch (SQLException e) {
+			System.out.println("[에러]selectUsersId() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return users;
+	}
+
+	//USERS 테이블에 저장된 모든 회원정보를 검색하여 반환하는 메소드 - 회원목록검색
+	public List<UsersDTO> selectAllUsers() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		List<UsersDTO> usersList=new ArrayList<UsersDTO>();
+		try {
+			con=getConnection();
+			
+			String sql="select * from users order by id";
+			pstmt=con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				UsersDTO users=new UsersDTO();
+				users.setId(rs.getString("id"));
+				users.setPw(rs.getString("pw"));
+				users.setName(rs.getString("name"));
+				users.setEmail(rs.getString("email"));
+				users.setPhone(rs.getString("phone"));
+				users.setBirthday(rs.getString("birthday"));
+				users.setZipcode(rs.getString("zipcode"));
+				users.setAddress1(rs.getString("address1"));
+				users.setAddress2(rs.getString("address2"));
+				users.setJoindate(rs.getString("joindate"));
+				users.setStatus(rs.getInt("status"));
+				usersList.add(users);		
+			}
+		} catch (SQLException e) {
+			System.out.println("[에러]selectAllUsers() 메소드의 SQL 오류 = "+e.getMessage());
+		} finally {
+			close(con, pstmt, rs);
+		}
+		return usersList;
+	}
+	
+		
+//메소드 추가 (08/04)
+		//보류 - 페이징 기능 미구현
+		/*
+		public int selectIdCount(String searchId) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			int count=0;
+			try {
+				con=getConnection();
+
+				if(searchId.equals("")) {
+					String sql="select count(*) from users";
+					pstmt=con.prepareStatement(sql);
+				} else {
+					String sql="select count(*) from users where id=? and status!=9";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, searchId);
+				}
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next()) {
+					count=rs.getInt(1);
+				}
+			} catch (SQLException e) {
+				System.out.println("[에러]selectIdCount() 메소드의 SQL 오류 = "+e.getMessage());
+			} finally {
+				 close(con, pstmt, rs);
+			}
+			return count;
+		}	
+		*/
+		
+		//아이디, 이름을 전달받아 USERS 테이블에 저장된 회원정보를 검색하여 반환하는 메소드
+		// => 아이디, 이름 미입력 시 전체 회원정보 반환
+		public List<UsersDTO> selectUserList(String searchId, String searchName) {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			List<UsersDTO> userList=new ArrayList<UsersDTO>();
+			try {
+				con=getConnection();
+				
+				if(!searchId.equals("")){//아이디 값이 null이 아닐 경우 - 아이디 검색
+					String sql="select * from users where id=? and status!=0";
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, searchId);
+				} else if(!searchName.equals("")){//이름 값이 null이 아닐 경우 - 이름 검색
+					String sql="select * from users where name like ?||'%' and status!=0"; //검색 글자가 포함되는 이름 모두 검색
+					pstmt=con.prepareStatement(sql);
+					pstmt.setString(1, searchName);
+				} else { //아이디, 이름이 null일 경우 - 전체 회원정보 반환
+					String sql="select * from users where status!=0 order by id";
+					pstmt=con.prepareStatement(sql);
+				}
+				
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					UsersDTO users=new UsersDTO();
+					users.setId(rs.getString("id"));
+					users.setPw(rs.getString("pw"));
+					users.setName(rs.getString("name"));
+					users.setEmail(rs.getString("email"));
+					users.setPhone(rs.getString("phone"));
+					users.setBirthday(rs.getString("birthday"));
+					users.setZipcode(rs.getString("zipcode"));
+					users.setAddress1(rs.getString("address1"));
+					users.setAddress2(rs.getString("address2"));
+					users.setJoindate(rs.getString("joindate"));
+					users.setStatus(rs.getInt("status"));
+					
+					userList.add(users);		
+				}
+			} catch (SQLException e) {
+				System.out.println("[에러]selectUserList() 메소드의 SQL 오류 = "+e.getMessage());
+			} finally {
+				close(con, pstmt, rs);
+			}
+			return userList;
+		}
+		
+		
+		//오늘 가입한 회원 개수 반환 메소드
+		public int selectTodayUserCount() {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			int count=0;
+			
+			try {
+				con=getConnection();
+
+				String sql="select * from users where joindate>=to_char(sysdate,'YYYYMMDD') and status!=0";
+				pstmt=con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					count++;
+				}
+				
+			} catch (SQLException e) {
+				System.out.println("[에러]selectTodayUserCount() 메소드의 SQL 오류 = "+e.getMessage());
+			} finally {
+				 close(con, pstmt, rs);
+			}
+			
+			return count;
+		}
+		
+		//USERS 테이블에 저장된 오늘 가입한 회원정보를 검색하여 반환하는 메소드
+		public List<UsersDTO> selectTodayUsers() {
+			Connection con=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			List<UsersDTO> usersList=new ArrayList<UsersDTO>();
+			try {
+				con=getConnection();
+				
+				String sql="select * from users where joindate>=to_char(sysdate,'YYYYMMDD') and status!=0 order by id";
+				pstmt=con.prepareStatement(sql);
+				
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					UsersDTO users=new UsersDTO();
+					users.setId(rs.getString("id"));
+					users.setPw(rs.getString("pw"));
+					users.setName(rs.getString("name"));
+					users.setEmail(rs.getString("email"));
+					users.setPhone(rs.getString("phone"));
+					users.setBirthday(rs.getString("birthday"));
+					users.setZipcode(rs.getString("zipcode"));
+					users.setAddress1(rs.getString("address1"));
+					users.setAddress2(rs.getString("address2"));
+					users.setJoindate(rs.getString("joindate"));
+					users.setStatus(rs.getInt("status"));
+					usersList.add(users);		
+				}
+			} catch (SQLException e) {
+				System.out.println("[에러]selectTodayUsers() 메소드의 SQL 오류 = "+e.getMessage());
+			} finally {
+				close(con, pstmt, rs);
+			}
+			return usersList;
+		}
+}

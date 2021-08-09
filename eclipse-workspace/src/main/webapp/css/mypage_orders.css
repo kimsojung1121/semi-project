@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.orderedList {
+	border: 1px solid RGB(200,200,200);
+}
+
+a { text-decoration: none; color:black;}
+a:link { text-decoration: none; color:black;}
+a:visited { text-decoration: none; color:black;}
+a:hover { text-decoration: none; color:black;}
+a:focus {text-decoration: none; color:black;}
+
+#showDetail:hover {
+	background: RGB(220,220,220);
+}
+
+.colName {
+	color:white; 
+	font-size: 15px; 
+	font-weight: normal;
+}
+
+.pageNumber {
+	margin: 20px;
+}
+
+#nowPage {
+	padding: 10px;
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	background: RGB(254,199,158);
+	font-size: 20px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.pageMove {
+	margin: 15px;
+}

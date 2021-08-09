@@ -1,0 +1,200 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="dao.ProductsDAO"%>
+<%@page import="dto.ProductsDTO"%>
+<%@page import="dto.OrdersDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.OrdersDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_check.jspf" %>
+
+<%! int orderSeq; %>
+
+
+<%
+	List<OrdersDTO> orderList = OrdersDAO.getDAO().selectAllOrders(loginUsers.getId());
+	if(orderList.size()==0)
+		System.out.println("orderList가 없습니다.");
+	orderSeq = 0;
+%>
+
+<link type="text/css" rel="stylesheet" href="css/cartnOrder.css"/>
+<style type="text/css">
+.orderedList {
+	border: 1px solid RGB(200,200,200);
+}
+
+#showDetail:hover {
+	background: RGB(220,220,220);
+}
+
+.colName {
+	color:white; 
+	font-size: 15px; 
+	font-weight: normal;
+}
+</style>
+
+<div>
+	<br><br>
+		<div class="cart">
+			<h2 align="center">주문 정보</h2>
+		</div>
+		<br><br>
+		
+		<% for(OrdersDTO order : orderList) { %>
+			<%
+			ProductsDTO product = ProductsDAO.getDAO().selectProductsInfo(order.getpNo());
+			orderSeq++;
+			%>
+			
+			<br><br>
+			
+			<table class="cart" id="cartTable">
+				<tr height="30px" style="background: RGB(254,199,158);">
+					<th class="colName">구분</th>
+					<th class="colName">주문일자</th>
+					<th class="colName">결제 금액</th>
+					<th class="colName">케이크 & 레터링</th>
+					<th class="colName">배송 상태</th>
+				</tr>
+				
+				<tr id="showDetail" onclick="shownHideDetail()">
+					<td class="orderedList">
+						<%=orderSeq%>
+					</td>
+					<td class="orderedList">
+						<%=order.getoDate() %>
+					</td>
+					<td class="orderedList">
+						<%=DecimalFormat.getInstance().format(product.getpPrice()) %>원
+					</td>
+					<td class="orderedList">
+						<div>
+							<img src="<%=request.getContextPath()%>/product_image/<%=product.getpNo()%>.jpg" width="80px" style="padding: 10px;">
+							<p><%=product.getpName() %></p>
+							<p><%=order.getcLettering() %></p>
+						</div>
+					</td>
+					
+					<td class="orderedList">
+						<% int state = order.getoState(); %>
+						<% if(state==1) {%>
+							주문 확인
+						<% } else if(state==2) { %>
+							배송준비
+						<% } else if(state==3) { %>
+							배송 중
+						<% } else if(state==4) { %>
+							배송 완료
+						<% } %>
+						
+						
+					</td>	
+				</tr>
+			
+			</table>
+			
+			<div class="details" >
+				<table class="cart" id="cartTable">
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+				
+				<tr>
+					<td colspan="5" height="40px" style="font-size: 20px; color:red;">상세 내역</td>
+				</tr>
+
+				<tr>
+					<td class="orderList" colspan="1">주문 번호</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=order.getoNo()%></span></td>
+					
+					<% //System.out.println(order.getoNo()); %>
+				</tr>
+				
+				<tr>
+					<td colspan="1" class="orderList">주문자 ID</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=loginUsers.getId()%></span></td>
+					<% //System.out.println(loginUsers.getId()); %>
+				</tr>
+				
+				<tr>
+					<td colspan="1" class="orderList">주문 상품</td>
+					
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=product.getpName()%></span></td>
+					<% //System.out.println(product.getpName()); %>
+				</tr>
+				
+				<tr>
+					<td colspan="1" class="orderList">결제 금액</td>
+					
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=DecimalFormat.getInstance().format(product.getpPrice())%>원</span></td>
+					<% //System.out.println(product.getpName()); %>
+				</tr>
+				
+				<tr>
+					<td class="orderList" colspan="1">레터링</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=order.getcLettering()%></span></td>
+					<% //System.out.println(order.getoLettering()); %>
+				</tr>
+				
+				<tr>
+					<td class="orderList" colspan="1">배송지</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue">
+					<%=order.getoAddress1()%>&nbsp;&nbsp;<%=order.getoAddress2() %></span>
+					<% //System.out.println(order.getoAddress2()); %>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="orderList" colspan="1">주문일자</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=order.getoDate()%></span></td>
+					<% //System.out.println(order.getoDate()); %>
+				</tr>
+				
+				<tr>
+					<td class="orderList" colspan="1">배송상태</td>
+					<td class="orderListVal" colspan="4">
+						<span class="orderValue">
+						<% int state2 = order.getoState(); %>
+						<% if(state==1) {%>
+							주문 확인
+						<% } else if(state==2) { %>
+							배송준비
+						<% } else if(state==3) { %>
+							배송 중
+						<% } else if(state==4) { %>
+							배송 완료
+						<% } %>
+						</span>
+					</td>
+				</tr>
+			</table>
+
+		</div>
+		<br>
+		<% } %>
+</div>
+
+
+<script type="text/javascript">
+
+function shownHideDetail() {
+	
+	$(".details").each(function() {
+		$(this).toggle();
+	});
+	
+	//$("#details").toggle();
+// 	var shownHide = document.getElementById("details"+num);
+// 	if(shownHide.style.display=="none") {
+// 		shownHide.style.display="";
+// 	} else {
+// 		shownHide.style.display=="none";
+// 	}
+}
+</script>

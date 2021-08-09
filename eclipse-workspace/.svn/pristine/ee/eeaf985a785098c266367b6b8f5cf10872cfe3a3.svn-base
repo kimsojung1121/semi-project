@@ -1,0 +1,56 @@
+<%@page import="dao.ProductsDAO"%>
+<%@page import="dto.ProductsDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%-- 로그인 상태의 관리자만 접근 가능 --%>
+<%@include file="/security/admin_check.jspf"%>
+
+<%
+	List<ProductsDTO> productList=ProductsDAO.getDAO().selectAllProducts();
+%>
+
+<%-- CSS --%>
+<link type="text/css" rel="stylesheet" href="css/admin.css"/>
+
+<div class="baseContent">
+<table class="user_table">
+	<tr>
+		<th>상품번호</th>
+		<th>상품이름</th>
+		<th>상품가격</th>
+		<th>이미지</th>
+	</tr>
+	<% if(productList.isEmpty()) { %>
+		<tr>
+			<td colspan="4">등록된 제품이 없습니다.</td>
+		</tr>
+	<% } else { %>
+		<% for(ProductsDTO product:productList) { %>
+		<tr onclick="location.href='<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=product_detail&pNo=<%=product.getpNo() %>'" class="productList">
+			<td>
+				<%=product.getpNo() %>
+			</td>
+			<td>
+				<%=product.getpName() %>
+			</td>
+			<td>
+				<%=product.getpPrice() %>
+			</td>
+			<td>
+				<img src="<%=request.getContextPath()%>/product_image/<%=product.getpNo()%>.jpg" width="100">
+			</td>
+		</tr>
+		<% } %>
+	<% } %>
+</table>
+<button type="button" class="btn" id="addProductBtn">상품 추가</button>
+</div>
+
+<script type="text/javascript">
+	$("#addProductBtn").click(function() {
+		location.href="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=product_add";
+	});
+	
+</script>

@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/* CSS Document */
+.member_wrap{width:593px; margin:20px auto 40px auto;}
+.member_pwd_wrap{margin:20px auto 40px auto;}
+.member_tit h2{font-size:28px; margin:0 0 20px 0; font-family: 'Arita-dotum-Medium';}
+.member_cont{padding:70px 60px; border:1px solid #dbdbdb;}
+.member_cont h3{font-weight:normal; font-size:18px; color:#222222;}
+.member_cont h3 + p{padding:5px 0 8px 0; color:#bebebc;}
+.login_input, .certify_confirm_input{border-top:1px solid #dbdbdb;}
+.wake_base_box .login_input{border-top:none 0;}
+
+/*.join_base_wrap .btn_center_box,
+.login_input + .btn_center_box,*/
+.member_cont .btn_center_box,
+.member_warning + .btn_center_box{margin:35px 0 0 0;}
+.join_ok_box .btn_center_box{padding:30px 0 0 0; border-top:1px solid #dbdbdb;}
+
+/* 로그인 */
+.member_cont .member_login_box h3{font-weight:normal; font-size:18px; color:#222222;}
+.member_cont .member_login_box .member_login{margin:0 0 20px 0;}
+.member_cont .member_login_box .login_input_sec{overflow:hidden;}
+.member_cont .member_login_box .login_input_sec > div{float:left;}
+.member_cont .member_login_box .login_input_sec input{display:block; width:292px; height:36px; margin:15px 0 10px 0; padding:0 0 0 8px; border:1px solid #d0d0d0; color:#979d9d;}
+
+.member_cont .member_login_box .login_input_sec button{
+    float:right;
+    width:158px;
+    height:91px;
+    margin:15px 0 0 0;
+    border:1px solid #ffc89b;
+    background:#ffc89b;
+    color:#ffffff;
+    font-size: 15px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.member_cont .member_login_box .login_input_sec button:hover{background:#ffc89b; border:1px solid #ffc89b;}
+.member_cont .member_login_box .id_chk{padding:0 0 26px 0;}
+.member_cont .member_login_box .id_chk p{padding:6px 0 0 0;}
+.member_cont .member_login_box .id_chk span{display:inline-block;}
+.member_cont .member_login_box .id_chk input{display:none;}
+.member_cont .btn_login_box{overflow:hidden; padding:20px 0 0 0; border-top:1px solid #dcdcdc;}
+.member_cont .btn_login_box li{float:left; margin:0 0 0 10px;}
+.member_cont .btn_login_box li:first-child{margin:0;}
+.member_cont .btn_login_box button {
+    width: 150px;
+    height: 45px;
+    color: #3e3d3c;
+    font-weight: bold;
+    font-size: 13px;
+    border: 1px solid #cccccc;
+    background: #fff;
+    cursor: pointer;
+}
+
+/* 유효성 검사 */
+#message {
+	color: #985f53;
+	font-size: 1.2em;
+	
+}

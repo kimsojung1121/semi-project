@@ -1,0 +1,371 @@
+body, th, td, input, select, textarea, button {
+    font-size: 12px;
+    line-height: 1.5;
+    font-family: 'Arita-dotum-Medium';
+    color: #333;
+}
+
+dl, ul, ol, li {
+    list-style: none;
+}
+
+div {
+    display: block;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+#wrap {
+    position: relative;
+    min-width: 1200px;
+}
+
+#JD-Header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: #ffc89b;
+    transition: all 0.35s ease;
+    z-index: 60;
+    border-bottom: 1px solid #eee;
+}
+
+#JD-Header .headerWrap {
+    position: relative;
+    max-width: 1482px;
+    margin: 0 auto;
+}
+
+#JD-Header .navi {
+    white-space: nowrap;
+    float: left;
+    width: 33%;
+    
+}
+
+#JD-Header .navi > li {
+    position: relative;
+    display: inline-block;
+    height: 72px;
+}
+
+#JD-Header .navi > li > a {
+    display: block;
+    height: 72px;
+    line-height: 72px;
+    font-size: 14px;
+    color: #fff;
+    font-family: 'GmarketSansMedium';
+    transition: all 0.35s ease;
+    -webkit-transition: all 0.35s ease;
+    -khtml-transition: all 0.35s ease;
+    -ms-transition: all 0.35s ease;
+    -o-transition: all 0.35s ease;
+}
+
+#JD-Header .navi .sub {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 72px;
+    min-width: 160px;
+    margin-left: -80px;
+    background: #fff;
+    opacity: 70%;
+    padding: 0;
+}
+
+#JD-Header .navi .sub > li {
+    position: relative;
+}
+
+#JD-Header .navi > li + li {
+    margin-left: 20px;
+}
+
+#JD-Header .navi .sub > li > a {
+    display: block;
+    height: 48px;
+    line-height: 48px;
+    font-size: 13px;
+    color: #000;
+    padding: 0 16px;
+    box-sizing: border-box;
+    font-family: 'GmarketSansMedium';
+    letter-spacing: 1.4px;
+}
+
+#JD-Header .logo {
+    float: left;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+#JD-Header .section_right {
+    float: right;
+    width: 30%;
+    margin-right: 40px;
+}
+
+#JD-Header .section_right .member {
+    text-align: right;
+}
+
+#JD-Header .section_right .menu_mem {
+    text-align: left;
+    display: inline-block;
+}
+
+#JD-Header .section_right .menu_mem > li {
+    display: inline-block;
+    zoom: 1;
+    display: inline;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+#JD-Header .section_right .menu_mem > li > a {
+    position: relative;
+    display: inline-block;
+    min-height: 72px;
+    line-height: 72px;
+    padding: 0 10px 2px;
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14px;
+    font-family: 'GmarketSansMedium';
+    color: #fff;
+}
+
+#container {
+    margin-top: -1px;
+}
+
+#contents {
+    min-height: 400px;
+    padding: 0 0 80px 0;
+}
+
+#wrap .sub_content {
+    padding-top: 130px;
+}
+
+#contents:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+#contents .sub_content {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.sub_content {
+    padding: 70px 0 0 0;
+}
+
+.sub_content:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
+.main_visual {
+    width: 100%;
+    margin: 72px 0 100px;
+}
+
+.slider-banner-511517418 {
+    width: 100%;
+}
+
+.slick-slider {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.goods_list_cont {
+    position: relative;
+    width: 100%;
+}
+
+
+.goods_tab_cont {
+    min-height: 150px;
+}
+
+.goods_list_cont ul li {
+    display: inline-block;
+    position: relative;
+    /* min-height: 50px; */
+    margin: 40px 20px;
+    text-align: center;
+    vertical-align: top;
+    font-size: 18px;
+}
+
+.goods_list_cont ul {
+    float: left;
+    width: 100%;
+    font-size: 0;
+    text-align: center;
+}
+
+.goods_list_cont .item_cont * {
+    font-size: 19px;
+    color: #000;
+    text-align: center;
+}
+
+.jd .goods_list_cont .item_photo_box {
+    border: 0;
+}
+
+.item_photo_box {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    border: 1px solid #ebebeb;
+    vertical-align: middle;
+}
+
+.item_cont {
+    padding: 0 10px;
+    text-align: left;
+    color: #1c1c1c;
+}
+
+.item_info_cont {
+    padding: 0;
+    text-align: left;
+    font-size: 12px;
+}
+
+.item_tit_box {
+    position: relative;
+    padding: 0;
+}
+
+.item_tit_box .item_name {
+    display: block;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.jd .item_money_box {
+    margin-top: 5px;
+}
+
+.item_money_box {
+    padding: 0;
+    line-height: 1;
+}
+
+.item_money_box .item_price {
+    display: block;
+    font-size: 12px;
+}
+
+
+
+#JD-Footer {
+    padding-bottom: 70px;
+    border-top: 0!important;
+}
+
+#JD-Footer .sns_icon {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#JD-Footer .company_menu {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+#JD-Footer .company {
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+#JD-Footer .company_menu li {
+    position: relative;
+    display: inline-block;
+}
+
+#JD-Footer .company_menu li a {
+    padding: 0 15px 0 16px;
+    font-size: 11px;
+    color: #222;
+    letter-spacing: 1px;
+}
+
+#JD-Footer .runtime {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background: #fff;
+    text-align: center;
+    line-height: 70px;
+    font-size: 12px;
+    color: #222;
+    z-index: 100;
+    letter-spacing: 1px;
+}

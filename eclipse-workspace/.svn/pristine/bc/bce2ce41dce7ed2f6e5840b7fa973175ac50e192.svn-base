@@ -1,0 +1,145 @@
+<%@page import="dao.ProductDAO"%>
+<%@page import="dto.ProductDTO"%>
+<%@page import="dto.OrdersDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.OrdersDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_check.jspf" %>
+
+<%! int OrderSeq; %>
+
+<%
+	List<OrdersDTO> orderList = OrdersDAO.getDAO().selectAllOrders(loginUsers.getId());
+	OrderSeq = 0;
+%>
+
+
+<style type="text/css">
+
+table {
+	border: 1px solid RGB(220,220,220);
+	border-collapse: collapse;
+	border-left-style: none;
+	border-right-style: none;
+}
+
+th {
+	width: 200px;
+	border: 1px solid RGB(220,220,220);
+	border-collapse: collapse;
+}
+
+td {
+	width: 200px;
+	border: 1px solid RGB(220,220,220);
+	border-left-style: none;
+	border-right-style: none;
+	border-collapse: collapse;
+}
+
+.checkBox {
+	width: 500px;
+}
+
+.cart {
+	width: 1500px;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+#cartTable {
+	font-size: 20px;
+}
+
+#tableBar {
+	background-color: RGB(220,220,220);
+	color: white;
+	height: 45px;
+}
+
+.order {
+	border: 1px solid RGB(220,220,220);
+	height: 60px;
+	width: 150px;
+	font-size: 20px;
+}
+
+#orderAllBtn {
+	background: RGB(254,199,158);
+	color: white;
+}
+
+</style>
+
+<div>
+	<br><br>
+		<h2 align="center">주문상세 정보</h2>
+		<br><br>
+		
+		<% for(OrdersDTO order : orderList) { %>
+			<% ProductDTO p_name = ProductDAO.getDAO().selectProductsInfo(order.getpNo()); OrderSeq++;%>
+			<h3 align="center"><%=OrderSeq%></h3>
+		
+			<table class="cart" id="cartTable">
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+
+				<tr>
+					<td colspan="1" height="60px" style="font-size: 15px; background: RGB(250,250,250);">주문번호</td>
+					<td height="20px;" colspan="4"  align="left"><%=order.getoNo()%></td>
+				</tr>
+				
+				<tr>
+					<td colspan="1" height="60px" style="font-size: 15px; background: RGB(250,250,250);">주문자 ID</td>
+					<td height="20px;" colspan="4"  align="left"><%=loginUsers.getId()%></td>
+				</tr>
+				
+				<tr>
+					<td colspan="1" height="60px" style="font-size: 15px; background: RGB(250,250,250);">주문상품</td>
+					
+					<td height="20px;" colspan="4"  align="left"><%=p_name%></td>
+				</tr>
+				
+				<tr>
+					<td colspan="1" height="60px" style="font-size: 15px; background: RGB(250,250,250);">레터링</td>
+					<td height="20px;" colspan="4"  align="left"><%=order.getoLettering()%></td>
+				</tr>
+				
+				<tr>
+					<td colspan="1" height="60px" style="font-size: 15px; background: RGB(250,250,250);">배송지</td>
+					<td height="20px;" colspan="4"  align="left">
+						<%=order.getoAddress1()%>&nbsp;&nbsp;<%=order.getoAddress2() %>
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="1" height="60px" style="font-size: 15px; background: RGB(250,250,250);">주문 일자</td>
+					<td height="20px;" colspan="4"  align="left"><%=order.getoDate()%></td>
+				</tr>
+				
+				<tr>
+					<td colspan="1" height="60px" style="font-size: 15px; background: RGB(250,250,250);">배송상태</td>
+					<td height="20px;" colspan="4"  align="left">
+						<% int state = order.getoState(); %>
+						<% if(state==1) {%>
+							주문 확인
+						<% } else if(state==2) { %>
+							배송준비
+						<% } else if(state==3) { %>
+							배송 중
+						<% } else if(state==4) { %>
+							배송 완료
+						<% } %>
+					</td>
+				</tr>
+				
+			</table>
+			<br>
+		<% } %>
+</div>

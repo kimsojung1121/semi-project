@@ -1,0 +1,53 @@
+@charset "UTF-8";
+#board_list {
+	width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#board_title {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#btn {
+	text-align: right;
+}
+
+table {
+	margin: 5px auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th {
+	border: 1px solid black;
+	background: black;
+	color: white;
+}
+
+td {
+	border: 1px solid black;
+	text-align: center;
+}
+
+.subject {
+	text-align: left;
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#board_list a:hover {
+	text-decoration: none;
+	color: blue;
+}
+
+.secret, .remove {
+	background: black;
+	color: white;
+	font-size: 14px;
+	border: 1px solid black;
+	border-radius: 4px;
+}

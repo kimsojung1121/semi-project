@@ -1,0 +1,38 @@
+<%@page import="dao.CartDAO"%>
+<%@page import="dto.CartDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_check.jspf" %>
+<% 
+
+
+
+	//POST 방식으로 요청하여 전달된 값에 대한 캐릭터셋 변경
+	//전달값을 반환받아 저장
+
+    String id = loginUsers.getId();
+	int pNo=Integer.parseInt(request.getParameter("pNo"));
+	String cLettering = request.getParameter("cLettering");
+	
+
+	
+	//DTO 인스턴스를 생성하고 전달값으로 필드값 변경
+	CartDTO cart=new CartDTO();
+	cart.setId(id);
+	cart.setpNo(pNo);
+	cart.setcLettering(cLettering);
+	
+	
+	//Cart 테이블에 장바구니정보(CartDTO 인스턴스)를 삽입하여 저장하는 DAO 클래스의 메소드 호출
+	CartDAO.getDAO().insertCart(cart);
+	
+	//장바구니 페이지로 이동
+	out.println("<script type='text/javascript'>");
+	out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=order&work=cart'");
+	out.println("</script>");
+	
+
+
+%>
+
+

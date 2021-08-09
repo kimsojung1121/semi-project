@@ -1,0 +1,78 @@
+@charset "UTF-8";
+.toptop {
+	display: flex;
+	justify-content: center;
+	padding: 0 auto;
+}
+
+.item_box {
+	padding-left: 100px;
+}
+
+.error {
+	color: red;
+	display: none;
+}
+
+.bt {
+	width: 500px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+dt {
+	font-size: 16px;
+}
+
+dd {
+	font-size: 22px;
+}
+
+.photo {
+	margin-top: 100px;
+	margin-left: 400px;
+}
+
+.item_goods_sec {
+	text-align: center;
+}
+
+.pr  {
+	font-size: 20px;
+}
+
+.pqa  {
+	font-size: 20px;
+}
+a:link { 
+
+ color: #58595b;
+
+ text-decoration: none;
+
+}
+
+a:visited {
+
+ color: #58595b;
+
+ text-decoration: none;
+
+}
+
+a:hover {
+
+ color: #58595b;
+
+ text-decoration: none;
+
+}
+
+a:active {
+
+ color: #58595b;
+
+ text-decoration: none;
+
+}
+

@@ -1,0 +1,368 @@
+<%@page import="dto.MemberDTO"%>
+<%@page import="dto.BoardDTO"%>
+<%@page import="dao.BoardDAO"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+
+<%@page import="java.util.List"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+                           <%-- ■■■■■■게시판 목록(보이는 출력페이지)■■■■■■ --%>
+
+<%--※필독※ --%>
+<%-- BOARD 테이블에 저장된 게시글을 검색하여 게시글 목록을 클라이언트에게 전달하는 JSP문서  --%>
+<%-- => 게시글 목록을 다수의 페이지로 구분하여 출력 - 페이징 처리(SQL 명령) --%>
+             <%-- ㄴ▶[SQL명령으로 만드는 페이징] - 1페이지에 보일 게시글 갯수 / 2페이지에 보일 게시글 갯수 ... --%>
+             <%-- ㄴ▶1페이지 보여주세요 ~ / 2페이지 보여주세요 ~ ....이런 식--%>
+<%-- => 페이지 번호를 다수의 (페이지)블럭으로 구분하여 출력 - 페이징 처리(알고리즘) --%>
+             <%-- ㄴ▶[다수 페이지블록] - 밑에 페이지가 1~10페이지(10개)까지만 보일수 있는것--%>
+             <%-- ㄴ다음 블럭당 예를들어 10개 / x개 ...이런식--%>
+             
+<%-- => 로그인 사용자가 [글쓰기]를 클릭한 경우 게시글 입력페이지(board.write.jsp)로 이동 --%>
+<%-- => 게시글의 [제목]을 클릭한 경우 게시글 상세 출력페이지 (board_detail.jsp)로 이동 - ★기준 : 글번호 --%>
+<%-- => [페이지 번호] 또는 [검색]을 클린한 경우 게시글 목록 출력 페이지(board_list.jsp)로 이동
+               ㄴ▶ [페이지 번호]와 [검색 관련 정보] 전달--%>
+
+<%
+
+       //●검색 정보 전달[검색용]●
+       //검색 관련 전달값을 반환 받아 저장
+       String search=request.getParameter("search");
+       if(search==null) { //검색 정보가 없을 경우
+    	    search="";
+       }
+     	String keyword=request.getParameter("keyword");
+     	if(keyword==null) {
+   		keyword="";
+     	}
+
+
+       //■1■ [요청페이지번호] = pageNum / 페이지별 쿼리스트링에 'page 1' 이런식으로 보여야함 
+       //JSP 문서를 요청할때 전달된 페이지 번호를 반환받아저장
+       //=> 페이지 번호 전달값이 없는 경우 첫번째 페이지의 게시글 목록 검색되게끔
+       int pageNum=1; //전달값이 없을 경우
+       if(request.getParameter("pageNum")!=null) { //전달값이 있는 경우(없으면 첫번째페이지로~)
+    	   pageNum=Integer.parseInt(request.getParameter("pageNum"));
+       //ex) [1] [2] [3] [4] .......이런식
+ 
+       }
+     //■2■ [한페이지에 몇개의 페이지를 보여줄 것인가] =pageSize / 페이지당 몇개의 페이지 선택 갯수를 보일지 설정
+     //하나의 페이지에 검색되어 출력될 게시글의 갯수 설정 
+     //페이지 게시글 1 ~ 10 = 세로
+     int pageSize=10; //페이지가 1~10까지만 보이게끔 설정 !!
+     
+     //■3■페이지에 저장된 페이지의 갯수는 몇개이냐  
+     //BOARD 테이블에 저장된 전체 게시글의 갯수를 검색하여 반환하는 DAO 클래스의 메소드 호출
+     //[SQL명령어로 저장]
+     //하단에 1 ~ 10 = 가로
+     //int totalBoard = BoardDAO.getDAO().selectBoardCount(); //검색기능 미포함
+     // ㄴ▶selectBoardCount()메소드 = "select count(*) from board"◀     
+     // => 검색 기능 구현
+     //●검색관련 값이 전달된 경우● 
+	  int totalBoard=BoardDAO.getDAO().selectBoardCount(search, keyword); //검색기능 포함
+
+     
+     //■4■ 1 ~ 끝 이어딘지 전체 페이지 갯수 (즉, 여기서는 10페이지씩 할꺼라서 갯수는 10개가 나오게끔) 
+     //전체 페이지의 갯수를 계산하여 저장
+     //ex) 91~100 = 10페이지가 나와야함 즉, 10이나와야함(즉, 시작이 1페이지)
+     //전체 페이지 기준 = 11(X) 10(O) 즉, +1을 하지말라는 것
+     //▶방법(1) - 3항 연산자
+     //ex) 91 / 10 = 0?0:1 (나눠서 0이면 0 아니면 1) 
+     //int totalPage=totalBoard/pageSize+(totalBoard%pageSize==0?0:1); //▶totalPage가 10의 배수냐라는 것
+     //            ㄴ▶나눠서 나머지가 있으면 1을 더하고, 나머지가 않으면 0을 더해라
+     
+     //▶방법(2) - Math.ceil = 소숫점 짤라내고 올림으로 정수로 만듬
+     int totalPage=(int)Math.ceil((double)totalBoard/pageSize);
+     
+     //■5■ URL 서브스트링 page= 에다가 없는 페이지를 요청할 경우를 방지[ex)-1페이지, 200페이지 즉, 없는 페이지를 요청할 경우]
+     //페이지가 10개만 보이는 경우에서임
+     //JSP 문서를 요청할때 전달된 페이지 번호에 대한 [검증]
+     if(pageNum<=0||pageNum>totalPage) {
+    	 pageNum=1; //없는 경우를 요청할 경우 1페이지로 되돌아가게끔 함
+     }
+     //★☆★☆★☆원하는 행만 검색하기 위해 [시작]행과 [끝]행이 있어야함★☆★☆★☆
+     
+     //■6■ 보여지는 게시글을 '행' 모양으로 만들고 [시작행] ~ [종료행] 까지 출력하는 것 - ※공식만 암기하고 대입만하기
+     //요청 페이지 번호에 대한 게시글 시작 행번호를 계산하여 저장
+     //ex) 1page 요청하면 : 1부터, 2page : 11부터, 3page : 21부터, 4page : 31부터,...
+     //ex) 3page 일 경우 =(3-1) * 10 + 1  
+     //pageNum = 클라이언트 요청한 것 / pageSize = 10페이지로 기준 잡음 / ※0 X 정수는 = 0임<<1페이지일 경우만
+     int startRow=(pageNum-1)*pageSize+1;
+     
+     //요청 페이지 번호에 대한 게시글 종료 행번호를 계산하여 저장
+     //ex) 1page : 10까지, 2page : 20까지, 3page : 30까지, 4page : 40까지,...
+     int endRow=pageNum*pageSize;
+     
+                                          //▶▶▶▶오라클일 경우에만 이렇게 계산하고 My-SQL에서는 이렇게 안함
+    
+     //■7■ 마지막 페이지 숫자와 게시글 숫자 비교하여 맞추기     
+     //마지막 페이지에 대한 게시글 종료 행번호를 전체 게시글의 갯수로 변경
+     //ex) 만약 totalboard가 45라면 totalpage는 5임 면 endRow를 '50'이아닌 '45'로 바꾸기
+     //즉, '맨 마지막 페이지 숫자를 맞추기위함'
+     if(endRow>totalBoard) {
+    	 endRow=totalBoard;
+     }
+     
+    //■8■ SQL명령문으로 시작행과 종료행 사이에 있는 게시글을 검색한 글 나오게하기 - 즉, [1]페이지에서 10개의 게시글 행만 보이게 해달라는 것(다중행)
+    //게시글 시작 행번호(startRow)와 종료행번호(endRow) 전달하여 BOARD 테이블에 저장된 게시글에서
+    //시작행부터 종료행의 [범위]안에서의 게시글을 검색하여 반환하는 DAO 클래스의 메소드 호출
+	//List<BoardDTO> boardList=BoardDAO.getDAO().selectBoardList(startRow, endRow);
+          //ㄴ▶모든 게시글x / 클라이언트가 요청한 [1],[2]..와같은 페이지에 있는 게시글만 출력
+          //ㄴ▶즉, ex) [1]을 눌러야 해당 페이지에 있는 게시글 10개가 보임
+	List<BoardDTO> boardList=BoardDAO.getDAO().selectBoardList(startRow, endRow, search, keyword);
+    //+검색기능 추가
+     
+     
+   
+    //====================================================================================================		
+    		
+    //★시퀀스 객체 출력x / 글번호는 '식별자' 역할만하기 / 답글에대한 번호는 따로만들기
+    //●1● 게시글 번호 (단, num 식별자 기준으로 출력은 하면 안됨)
+    //페이지에 출력될 게시글에 대한 시작 글번호를 계산하여 저장
+    //ex) 검색 게시글의 총갯수 : 100일 경우 >> 1page : 100, 2page : 90, 3page : 80, 4page : 70, .....
+    //           ㄴ★즉, 최신일수록 게시글 번호가 높은것이 나오지..? 
+    //ex)1page=100(91~100)     1       10 
+    int number=totalBoard-(pageNum-1)*pageSize; // number → 전역변수
+    // ㄴ▶즉, [글 번호] ★총 계산된 글 번호★
+    
+    //●2● - 회원한테만 사용자 글쓰기 권한 부여 [loginMember 라는 속성명 값에 세션권한정보 저장] ♠권한 및 버튼안보이기
+    //세션에 저장된 권한 관련 정보(회원정보)를 반환받아 저장
+    //=> 로그인 사용자에게만 글쓰기, 권한 부여
+    //=> 비밀글인 경우 게시글 장성자 또는 관리자에게만 게시글 상세보기 권한 부여(비로그인은 제목도안보임)
+    MemberDTO loginMember=(MemberDTO)session.getAttribute("loginMember");
+    
+    //●3● - 글작성시 현재 날짜 정보 저장 ♠날짜
+    //시스템의 현재 날짜를 반환받아 저장
+    // => 게시글 작성일을 현재 날짜와 비교하여 출력하기 위해 
+    //▶▶▶ 오늘 작성한것 = '시분초' / 오늘이 아닌 지난 과거 = '날짜'로만 출력
+    String currentDate=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+  
+  
+%>
+<style type="text/css">
+#board_list {
+	width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#board_title {
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+#btn {
+	text-align: right;
+}
+
+table {
+	margin: 5px auto;
+	border: 1px solid pink;
+	border-collapse: collapse;
+}
+
+th {
+	border: 1px solid pink;
+	background: RGB(254,199,158);
+	color: white;
+}
+
+td {
+	border: 1px solid RGB(254,199,158);
+	text-align: center;
+}
+
+.subject {
+	text-align: left;
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#board_list a:hover {
+	text-decoration: none;
+	color: blue;
+}
+
+.secret, .remove {
+	background: pink;
+	color: white;
+	font-size: 14px;
+	border: 1px solid pink;
+	border-radius: 4px;
+}
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+ <div id="board_title" align="center">REVIEW</div>
+   
+   <% if(loginMember != null) {//★로그인 사용자인 경우에만 버튼이 보이게함 / 비회원은 버튼이 안보이게함 %>
+   <div id="btn">
+                                                <%--▶ 전달값이 없음(href=경로) '새글' 이라는 뜻 --%>
+                                                <%--▶ ? 뒤에 쿼리스트링은 변수명=문자값--%>
+      <button type="button" onclick="location.href='<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_write';">글쓰기</button>
+	</div>
+	<% } %>
+	<div>&nbsp;</div>
+	<%-- ★게시글 검색★ --%>
+	<form action="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_list" method="post">
+		<!-- select 입력태그에 의해 전달되는 값은 컬럼명과 동일하게 설정 -->
+		<p align="center"><select name="search"></p>
+			<option value="writer" selected="selected">&nbsp;작성자&nbsp;</option>
+			<option value="subject">&nbsp;제목&nbsp;</option>
+			<option value="content">&nbsp;내용&nbsp;</option>
+		</select>
+		<input type="text" name="keyword">
+		<button type="submit">검색</button>
+	</form>
+</div>
+	
+	<table>
+		<tr>
+			<th width="100">번호</th>
+			<th width="500">제목</th>
+			<th width="100">작성자</th>
+			<th width="100">조회수</th>
+			<th width="200">문의날짜</th>
+		</tr>
+		
+		<% if(totalBoard==0) { %>
+		<tr>
+			<td colspan="5">검색된 게시글이 하나도 없습니다.</td>
+		</tr>
+		<% } else { %>
+			<%-- 게시글 목록에서 게시글을 하나씩 제공받아 반복 출력 --%>
+			<% for(BoardDTO board:boardList) {  %>
+			<tr>
+				<%-- 글번호 : BOARD 테이블에 저장된 글번호가 아닌 계산된 글번호 출력 --%>
+				<td><%=number %></td>
+				
+				<%-- 제목 --%>
+				
+				
+				<td class="subject">
+					<% if(board.getReStep()!=0) {//●답글인 경우 %>
+						<%-- 답글의 깊이에 따라 왼쪽 여백을 다르게 설정하여 출력 --%>
+						<span style="margin-left: <%=board.getReLevel()*20%>px;">└[답글]</span>
+					<% } %>
+					
+					<%-- 게시글의 상태에 따른 제목 출력과 링크 설정 --%>
+					<% if(board.getStatus()==0) {//●일반 게시글인 경우 %>
+						<a href="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_detail&num=<%=board.getNum()%>&pageNum=<%=pageNum%>"><%=board.getSubject() %></a>
+					<% } else if(board.getStatus()==1) {//●비밀 게시글인 경우 %>
+						<span class="secret">비밀글</span>
+						<%-- 로그인 사용자 중 게시글 작성자이거나 관리자인 경우 - 권한이 있는 경우 --%>
+						<% if(loginMember!=null && (loginMember.getId().equals
+								(board.getId()) || loginMember.getStatus()==9)) { %>
+							<a href="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_detail&num=<%=board.getNum()%>&pageNum=<%=pageNum%>"><%=board.getSubject() %></a>
+						<% } else {//●비밀 게시글에 대한 권한이 없는 경우 %>
+							작성자 또는 관리자만 확인 가능합니다.
+						<% } %>
+					<% } else if(board.getStatus()==9) {//●삭제 게시글인 경우 %>
+						<span class="remove">삭제글</span>
+						작성자 또는 관리자에 의해 삭제된 게시글입니다.
+					<% } %>
+				</td>
+				
+				<% if(board.getStatus()!=9) {//●삭제 게시글이 아닌 경우 %>
+					<%-- 작성자 --%>
+					<td><%=board.getWriter() %></td>
+					
+					<%-- 조회수 --%>
+					<td><%=board.getReadcount() %></td>
+					
+					<%-- 작성일 : 오늘 작성된 게시글은 시간만 출력하고 과거에 작성된 게시글은 날짜와 시간 출력 --%>
+					<td>
+					<% if(currentDate.equals(board.getRegDate().substring(0, 10))) {//날짜가 같은 경우 %>
+						<%=board.getRegDate().substring(11) %> <%-- 시간만 출력 --%>
+					<% } else { %>
+						<%=board.getRegDate() %> <%-- 날짜와 시간 출력 --%>
+					<% } %>	
+					</td>
+				<% } else {//●삭제 게시글인 경우 %>	
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+				<% } %>	
+			</tr>
+			
+			<%-- 출력될 글번호 1씩 감소 --%>
+			<% number--; %>
+			<%} %>
+		<% } %>
+	</table>
+<% 
+      //★페이지 번호 출력 하단에 [1],[2]..이런식 + 링크설정★=▶이것조차 페이징처리([1]..[5]단위로만 보이기 위해)
+	  //♣[처음][이전]...[다음][마지막] ▶ 출력
+      // => 직접 보이게끔 안하면 쿼리스트링말고는 페이지 넘길 방법이없음 
+	  	
+	        
+		//페이지 블럭에 출력될 페이지의 갯수 저장
+		//▶blocksize = 5인 이유는 1~5페이지 단위로만 만들것이기 때문
+		//즉, [5페이지단위]
+		int blockSize=5;
+	
+		//페이지 블럭에 출력될 시작 페이지 번호를 계산하여 저장
+		//ex) 1Block : 1, 2Block : 6, 3Block : 11, 4Block : 16,...
+	    // ※1블럭(1페이지)는 1부터 보이기 / 2블럭(2페이지)는 6부터 보이기...
+	    // ※pageNum(내가 클릭한 페이지) ex). 8페이지면 pageNum=8 즉, 기준은 [pageNum]
+		int startPage=(pageNum-1)/blockSize*blockSize+1;
+
+		//페이지 블럭에 출력될 종료 페이지 번호를 계산하여 저장
+		//ex) 1Block : 5, 2Block : 10, 3Block : 15, 4Block : 20,...
+		int endPage=startPage+blockSize-1;
+		
+		//마지막 페이지 블럭의 종료 페이지 번호 변경
+		//▶마지막페이지가 [1] ~ [5]단위가 아니라 [1] ~ [3] 이런식으로도 끝날 수 있기때문
+		if(endPage>totalPage) {
+			endPage=totalPage;
+		}
+	%>
+	<br>
+	<div align="center">
+	<% //★[처음][이전]...[다음][마지막] + 검색기능(식별자 : 작성자 / 제목 / 내용 포함)
+	   if(startPage>blockSize) { %>
+		<a href="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_list&pageNum=1&search=<%=search%>&keyword=<%=keyword%>">[처음]</a></p>
+		<a href="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_list&pageNum=<%=startPage-blockSize%>&search=<%=search%>&keyword=<%=keyword%>">[이전]</a></p>
+	<% } else { %>
+		[처음][이전]
+	<% } %>
+	
+	<% for(int i=startPage;i<=endPage;i++) { %>
+		<% if(pageNum!=i) { %>
+			<a href="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_list&pageNum=<%=i%>&search=<%=search%>&keyword=<%=keyword%>">[<%=i %>]</a>
+		<% } else { %>
+			[<%=i %>]
+		<% } %>
+	<% } %>
+	
+	<% if(endPage!=totalPage) { %>
+		<a href="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_list&pageNum=<%=startPage+blockSize%>&search=<%=search%>&keyword=<%=keyword%>">[다음]</a>
+		<a href="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_list&pageNum=<%=totalPage%>&search=<%=search%>&keyword=<%=keyword%>">[마지막]</a>
+	<% } else { %>
+		[다음][마지막]
+	<% } %>
+	
+<!-- 	<div>&nbsp;</div> -->
+<%-- 	<%-- ★게시글 검색★ --%> 
+<%-- 	<form action="<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_list" method="post"> --%>
+<!-- 		<!-- select 입력태그에 의해 전달되는 값은 컬럼명과 동일하게 설정 --> 
+<!-- 		<p align="center"><select name="search"></p> -->
+<!-- 			<option value="writer" selected="selected">&nbsp;작성자&nbsp;</option> -->
+<!-- 			<option value="subject">&nbsp;제목&nbsp;</option> -->
+<!-- 			<option value="content">&nbsp;내용&nbsp;</option> -->
+<!-- 		</select> -->
+<!-- 		<input type="text" name="keyword"> -->
+<!-- 		<button type="submit">검색</button> -->
+<!-- 	</form> -->
+<!-- </div> -->
+</div>
+
+
+

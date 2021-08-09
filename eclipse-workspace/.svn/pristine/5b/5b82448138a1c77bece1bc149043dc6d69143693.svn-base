@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* CSS Document */
+.sub_content .content {margin-top: 70px;}
+.mypage_zone_tit{margin:0 0 0 0; padding:0 0 10px 0; font-size:16px;}
+.mypage_zone_tit span{padding:0 0 0 5px; color:#777777; font-size:12px; font-weight:normal;}
+.mypage_shipping .mypage_zone_tit h3{display:inline-block;}
+.mypage_shipping .mypage_zone_tit .pick_list_num{display:inline-block;}
+
+/* ------------- 마이페이지 > 회원 회원정보 ------------- */
+.my_page_password p{font-size:14px; text-align:center;}
+.my_page_password h2{font-size:30px; text-align:center;}
+.my_page_password .mypage_zone_tit{margin:0 0 20px 0; padding:0 0 10px 0; font-size:14px; }
+.my_page_password .id_pw_cont{margin:20px auto; padding:26px 0 24px 0; border:1px solid #dadada; text-align:center; width: 550px; height: 70px;}
+.my_page_password .id_pw_cont dl{display:inline-block; margin:15px; vertical-align:top;}
+.my_page_password .id_pw_cont dt{display:inline-block; padding:5px 10px 0 0; font-size:14px; text-align:center; font-weight:bold; vertical-align:top;}
+.my_page_password .id_pw_cont dd{display:inline-block; font-size:14px; text-align:left;}
+.my_page_password .id_pw_cont dd strong{display:block; padding:5px 0 0 0; color:#ab3e55;}
+.my_page_password .id_pw_cont dd .error{font-size:14px; color:#ab3e55;}
+
+/* ------------- 마이페이지 > 내정보수정 ------------- */
+.my_page h3{font-weight:bold;}
+.my_page .mypage_zone_tit{margin:0 0 50px 0; padding:0 0 10px 0; font-size:14px; border-bottom:1px solid #3c3c3c;}
+.my_page .join_base_wrap .member_cont{width:100%; margin:0; padding:0;}
+
+
+/* ------------- 마이페이지 > 회원탈퇴 ------------- */
+.hack_out {margin:0 0 50px 0;}
+.hack_out .mypage_zone_tit{margin:0 0 50px 0; padding:0 0 10px 0; font-size:14px; border-bottom:1px solid #999999;}
+.hack_out .mypage_unregister .mypage_zone_tit{margin:0; padding:0 0 10px 0; font-size:14px; border-bottom:none 0;}
+.hack_out .mypage_unregister .unregister_info{margin:0 0 40px 0; padding:15px 15px 15px 15px; color:#717171; border:1px solid #dadada;}
+.hack_out .mypage_unregister .hack_out_list li{float:left; width:35%; padding:0 0 7px 0;}
+.hack_out .mypage_unregister textarea{width:98%; height:100px;}

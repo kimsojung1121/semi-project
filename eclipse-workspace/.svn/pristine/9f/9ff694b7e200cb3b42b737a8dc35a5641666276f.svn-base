@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+/* CSS Document */
+.member_wrap{width:593px; margin:20px auto 40px auto;}
+.member_pwd_wrap{margin:20px auto 40px auto;}
+.member_cont{padding:70px 60px; border:1px solid #dbdbdb;}
+.member_cont h3{font-weight:normal; font-size:18px; color:#222222;}
+.member_cont h3 + p{padding:5px 0 8px 0; color:#bebebc;}
+.login_input, .certify_confirm_input{border-top:1px solid #dbdbdb;}
+.wake_base_box .login_input{border-top:none 0;}
+
+/*.join_base_wrap .btn_center_box,
+.login_input + .btn_center_box,*/
+.member_cont .btn_center_box,
+.member_warning + .btn_center_box{margin:35px 0 0 0;}
+.join_ok_box .btn_center_box{padding:30px 0 0 0; border-top:1px solid #dbdbdb;}
+
+
+/* 회원가입 약관동의 */
+.join_agreement_wrap .member_tit{overflow:hidden; border-bottom:1px solid #dbdbdb;}
+.join_agreement_wrap .member_tit ol{float:right; line-height: 62px; padding-right: 30px;}
+.join_agreement_wrap .member_tit ol li{float:left; font-size:14px; color:#d1d1d1;}
+
+.join_agreement_wrap .member_tit .page_on{
+    color:#985f53;
+}
+
+.join_agreement_wrap .member_tit li span{font-size:16px; font-weight:bold;}
+.join_agreement_wrap .member_tit li span > img{padding:0 14px; vertical-align: -1px;}
+.join_agreement_wrap .member_cont{width:743px; margin:0 auto; border:none;}
+
+.join_agreement_wrap .member_cont h3{
+    padding:0 0 17px 0;
+    font-size:14px;
+    color:#222222;
+    font-family: 'GmarketSansMEdium';
+}
+
+.join_agreement_wrap .join_agreement_cont{padding:30px 0 0 0; border-top:1px solid #999999;}
+.join_agreement_cont .form_element em{font-weight:bold;}
+.join_agreement_cont .form_element span{color:#717171; font-size:11px;}
+
+.join_agreement_cont .form_element strong{
+    color:#985f53;
+}
+
+.join_agreement_cont .form_element strong.choice{
+    color:#985f53;
+}
+
+.join_agreement_cont .form_element span > a{
+    padding:0 10px 0 5px;
+    color:#985f43;
+    font-size:12px;
+    background:url('../../img/member/icon_arrow_03.png') no-repeat right center;
+    text-decoration:underline;
+}
+
+.join_agreement_cont .form_element span > a:hover {
+    text-decoration:underline;
+}
+
+.join_agreement_cont .join_agreement_box{margin:0 0 30px 0;}
+.join_agreement_cont .agreement_choice_box{padding:10px 0 0 0;}
+.join_agreement_cont .agreement_choice_box table{width:100%;}
+.join_agreement_cont .agreement_choice_box table th{padding:20px 0; border-top:1px solid #999999; border-left:1px solid #dcdcdc; background:#fbfbfb}
+.join_agreement_cont .agreement_choice_box table th:first-child,
+.join_agreement_cont .agreement_choice_box table td:first-child{border-left:none;}
+.join_agreement_cont .agreement_choice_box table td{padding:20px 0 20px 10px; border-top:1px solid #dcdcdc; border-left:1px solid #dcdcdc; border-bottom:1px solid #dcdcdc;}
+.join_agreement_cont .agreement_choice_box .agreement_scroll{overflow-y:scroll; height: 92px;}
+.join_agreement_cont .important_check_box {text-align:center;}
+.join_agreement_cont #checkAll{color: #985f53;}
+.join_agreement_cont .important_check_box .important_check{
+    display:inline-block;
+    margin:0 auto;
+    padding:0 0 0 18px;
+    color:#985f53;
+    background:url('../../img/member/icon_caution02.png') no-repeat 0px 3px;
+}
+
+.join_agreement_cont .agreement_box{overflow-x: hidden; overflow-y: auto; height: 89px; margin: 10px 0 0; padding: 20px; border: 1px solid #e6e6e6; border-top: 1px solid #999999; line-height: 18px;}
+
+.join_agreement_wrap .join_certify_box{margin:30px 0 0 0;}
+.join_agreement_wrap .join_certify_box h3{font-weight:bold;}
+.join_agreement_wrap .join_certify_list{padding:50px 0; border-top:1px solid #999999; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; border-bottom:1px solid #e6e6e6;}
+.join_agreement_wrap .join_certify_list .form_element{display:block;}
+.join_agreement_wrap .join_certify_list ul{text-align:center;}
+.join_agreement_wrap .join_certify_list li{display:inline-block; padding:0 13px 0 13px;}
+
+.join_agreement_wrap .btn_member_sec ul{overflow:hidden; margin:20px 0 0 0; text-align:center; font-size:0;}
+.join_agreement_wrap .btn_member_sec li{display:inline-block;}
+.join_agreement_wrap .btn_member_sec li button{width:150px; height:42px; border:1px solid #6b6b6b; background:#6b6b6b; color:#fff; font-weight:bold; font-size:13px; cursor:pointer;}
+.join_agreement_wrap .btn_member_sec li button:hover{border:1px solid #626262; color:#fff; background:#626262;}
+
+.agreement_choice_box .form_element{text-align:center;}
+.agreement_choice_box .form_element input{left:26px;}

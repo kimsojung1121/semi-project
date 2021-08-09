@@ -1,0 +1,109 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%-- 강사님 board 소스 --%>
+<style type="text/css">
+#board_list {
+	width: 1000px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#board_title {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#btn {
+	text-align: right;
+}
+
+table {
+	margin: 5px auto;
+	border: 1px solid blue;
+	border-collapse: collapse;
+}
+
+th {
+	border: 1px solid blue;
+	background: blue;
+	color: white;
+}
+
+td {
+	border: 1px solid blue;
+	text-align: center;
+}
+
+.subject {
+	text-align: left;
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#board_list a:hover {
+	text-decoration: none;
+	color: blue;
+}
+
+.secret, .remove {
+	background: blue;
+	color: white;
+	font-size: 14px;
+	border: 1px solid pink;
+	border-radius: 4px;
+}
+</style>
+ <div id="board_title"><p align="center">REIVEW</p></div>
+   <div id="btn">                                  
+      <button type="button" onclick="location.href='<%=request.getContextPath()%>/site/index.jsp?workgroup=board&work=board_write';">
+글쓰기</button>
+	</div>
+	<table>
+		<tr>
+			<th width="100">번호</th>
+			<th width="500">제목</th>
+			<th width="100">작성자</th>
+			<th width="100">조회수</th>
+			<th width="200">작성일</th>
+		</tr>
+		<tr>
+			<td colspan="5">검색된 게시글이 하나도 없습니다.</td>
+		</tr>
+			<tr>
+				<td class="subject">
+<!-- <span style="margin-left: 20px">└[답글]</span> -->
+	                    <%--★임시방편 --%>
+<%-- 						<a href="<%=request.getContextPath()%>/home.jsp?workgroup=qna&work=qna_detail"></a> --%>
+<!-- 						<span class="secret">비밀글</span> -->
+<%-- 							<a href="<%=request.getContextPath()%>/home.jsp?workgroup=qna&work=qna_detail"></a> --%>
+<!-- 						<span class="remove">삭제글</span> -->
+				</td>
+					<td>
+					</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+			</tr>
+
+	</table>
+
+	<div>&nbsp;</div>
+	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=qna&work=qna_list" method="#">
+		<select name="search">
+			<option value="writer" selected="selected">&nbsp;작성자&nbsp;</option>
+			<option value="subject">&nbsp;제목&nbsp;</option>
+			<option value="content">&nbsp;내용&nbsp;</option>
+		</select>
+		<input type="text" name="keyword">
+		<button type="submit">검색</button>
+	</form>
+</div>
+	
+	
+</div>
+
+
+
+

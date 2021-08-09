@@ -1,0 +1,224 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dto.OrdersDTO;
+
+public class OrdersDAO extends JdbcDAO {
+	private static OrdersDAO _dao;
+	
+	private OrdersDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	static {
+		_dao = new OrdersDAO();
+	}
+	
+	public static OrdersDAO getDAO() {
+		return _dao;
+	}
+	
+	
+	public List<OrdersDTO> selectAllOrders(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrdersDTO> orderList = new ArrayList<OrdersDTO>();
+		
+		try {
+			con = getConnection();
+			String sql = "select * from orders where id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrdersDTO orders = new OrdersDTO();
+				orders.setoNo(rs.getInt("o_no"));
+				orders.setId(rs.getString("id"));
+				orders.setpNo(rs.getInt("p_no"));
+				orders.setoOption(rs.getInt("o_option"));
+				orders.setoLettering(rs.getString("o_lettering"));
+				orders.setoZipcode(rs.getString("o_zipcode"));
+				orders.setoAddress1(rs.getString("o_address1"));
+				orders.setoAddress2(rs.getString("o_address2"));
+				orders.setoAmount(rs.getInt("o_amount"));
+				orders.setoDate(rs.getString("o_date").substring(0,10));
+				orders.setoState(rs.getInt("o_state"));
+				orderList.add(orders);
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("[에러] selectAllOrders() 메소드에서 오류 발생 ");
+		} finally {
+			close(con, pstmt, rs);
+		}
+		
+		return orderList;
+		
+	}
+	
+	public List<OrdersDTO> selectOrderNo(int oNo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrdersDTO> orderList = new ArrayList<OrdersDTO>();
+		
+		try {
+			con = getConnection();
+			String sql = "select * from orders where o_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, oNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrdersDTO orders = new OrdersDTO();
+				orders.setoNo(rs.getInt("o_no"));
+				orders.setId(rs.getString("id"));
+				orders.setpNo(rs.getInt("p_no"));
+				orders.setoOption(rs.getInt("o_option"));
+				orders.setoLettering(rs.getString("o_lettering"));
+				orders.setoZipcode(rs.getString("o_zipcode"));
+				orders.setoAddress1(rs.getString("o_address1"));
+				orders.setoAddress2(rs.getString("o_address2"));
+				orders.setoAmount(rs.getInt("o_amount"));
+				orders.setoDate(rs.getString("o_date").substring(0,10));
+				orders.setoState(rs.getInt("o_state"));
+				orderList.add(orders);
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("[에러] selectOrderNo() 메소드에서 오류 발생 ");
+		} finally {
+			close(con, pstmt, rs);
+		}
+		
+		return orderList;
+		
+	}
+	
+	public List<OrdersDTO> selectOrderToday() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<OrdersDTO> orderList = new ArrayList<OrdersDTO>();
+		
+		try {
+			con = getConnection();
+			String sql = "select * from orders where o_date=sysdate";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				OrdersDTO orders = new OrdersDTO();
+				orders.setoNo(rs.getInt("o_no"));
+				orders.setId(rs.getString("id"));
+				orders.setpNo(rs.getInt("p_no"));
+				orders.setoOption(rs.getInt("o_option"));
+				orders.setoLettering(rs.getString("o_lettering"));
+				orders.setoZipcode(rs.getString("o_zipcode"));
+				orders.setoAddress1(rs.getString("o_address1"));
+				orders.setoAddress2(rs.getString("o_address2"));
+				orders.setoAmount(rs.getInt("o_amount"));
+				orders.setoDate(rs.getString("o_date").substring(0,10));
+				orders.setoState(rs.getInt("o_state"));
+				orderList.add(orders);
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("[에러] selectOrderToday() 메소드에서 오류 발생 ");
+		} finally {
+			close(con, pstmt, rs);
+		}
+		
+		return orderList;
+	}
+	
+	public int insertOrder(OrdersDTO orders) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int rows=0;
+		
+		try {
+			con = getConnection();
+			String sql ="insert into orders values(?,?,?,?,?,?,?,?,?,sysdate,1)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, orders.getoNo());
+			pstmt.setString(2, orders.getId());
+			pstmt.setInt(3, orders.getpNo());
+			pstmt.setInt(4, orders.getoOption());
+			pstmt.setString(5, orders.getoLettering());
+			pstmt.setString(6, orders.getoZipcode());
+			pstmt.setString(7, orders.getoAddress1());
+			pstmt.setString(8, orders.getoAddress2());
+			pstmt.setInt(9, orders.getoAmount());
+			rows = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("[에러] insertOrder() 메소드에서 오류 발생 ");
+		} finally {
+			close(con, pstmt);
+		}
+		
+		return rows;
+	}
+	
+	public int updateOrder(OrdersDTO orders) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int rows=0;
+		
+		try {
+			con = getConnection();
+			String sql ="update orders set o_option=?, o_lettering=?, o_zipcode=?, o_address1=?, o_address2=?, o_amount=?, o_state=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, orders.getoOption());
+			pstmt.setString(2, orders.getoLettering());
+			pstmt.setString(3, orders.getoZipcode());
+			pstmt.setString(4, orders.getoAddress1());
+			pstmt.setString(5, orders.getoAddress2());
+			pstmt.setInt(6, orders.getoAmount());
+			if(orders.getoState()<0 && orders.getoState()<5) {
+				pstmt.setInt(7, orders.getoState());
+			}
+			rows = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("[에러] updateOrder() 메소드에서 오류 발생 ");
+		} finally {
+			close(con, pstmt);
+		}
+		
+		return rows;
+	}
+	
+	public int deleteOrder(int oNo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int rows=0;
+		
+		try {
+			con = getConnection();
+			String sql ="delete orders where o_no=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, oNo);
+			rows = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println("[에러] deleteOrder() 메소드에서 오류 발생 ");
+		} finally {
+			close(con, pstmt);
+		}
+		
+		return rows;
+	}
+}

@@ -1,0 +1,15 @@
+<%@page import="dto.UsersDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%-- 로그인 여부 확인 페이지 - 비로그인인 경우 로그인 페이지로 이동 --%>
+<%
+	//세션에 저장된 권한 관련 정보를 반환받아 저장
+	UsersDTO loginUsers=(UsersDTO)session.getAttribute("loginUsers");
+	
+	if(loginUsers==null) {//비로그인 사용자인 경우
+		out.println("<script type='text/javascript'>");
+		out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=users&work=users_login';");
+		out.println("</script>");
+		return;
+	}
+%>

@@ -1,0 +1,101 @@
+<%@page import="dao.OrdersDAO"%>
+<%@page import="dto.OrdersDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%-- 로그인 상태의 관리자만 접근 가능 --%>
+<%@include file="/security/admin_check.jspf"%>
+
+<%-- 검색 기능 --%>
+<%
+	String searchUser=request.getParameter("searchUser");
+	if(searchUser==null) {
+		searchUser="";
+	}
+	
+	String searchProduct=request.getParameter("searchProduct");
+	if(searchProduct==null) {
+		searchProduct="";
+	}
+	
+	
+	List<OrdersDTO> orderList=OrdersDAO.getDAO().selectOrderList(searchUser, searchProduct);
+
+%>
+
+<%-- CSS --%>
+<link type="text/css" rel="stylesheet" href="css/admin.css"/>
+
+<%-- 주문 정보 검색 기능 --%>
+<div class="search_user">
+	<%-- 회원ID 검색 --%>
+	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=orders" method="post" style="display: inline-block;">
+		<input type="text" placeholder="회원 ID" onfocus="this.placeholder=''" onblur="this.placeholder='회원 ID'" 
+		name="searchUser">
+		<%-- <button type="button" id="searchIdBtn">검색</button> --%>
+		<button type="submit">검색</button>
+	</form>
+	<%-- 제품번호 검색 --%>
+	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=orders" method="post" style="display: inline-block;">
+		<input type="text" placeholder="제품 번호" onfocus="this.placeholder=''" onblur="this.placeholder='제품 번호'" 
+		name="searchProduct">
+		<%-- <button type="button" id="searchNameBtn">검색</button> --%>
+		<button type="submit">검색</button>
+	</form>
+	<!-- 메세지 출력 -->
+	<div id="searchMsg" style="display: inline-block; color:red;"></div>
+</div>
+
+<div class="baseContent">
+<table class="user_table">
+	<tr>
+		<th>주문번호</th>
+		<th>회원ID</th>
+		<th>상품번호</th>
+		<th>레터링문구</th>
+		<th>주소</th>
+		<th>주문날짜</th>
+		<th>배송상태</th>
+	</tr>
+	<% if(orderList.isEmpty()) { %>
+		<tr>
+			<td colspan="7">주문이 없습니다.</td>
+		</tr>
+	<% } else { %>
+		<% for(OrdersDTO order:orderList) { %>
+		<tr onclick="location.href='<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=order_detail&oNo=<%=order.getoNo() %>'" class="productList">
+			<td>
+				<%=order.getoNo() %>
+			</td>
+			<td>
+				<%=order.getId() %>
+			</td>
+			<td>
+				<%=order.getpNo() %>
+			</td>
+			<td>				
+				<%=order.getcLettering() %>
+			</td>
+			<td>
+				[<%=order.getoZipcode() %>]<%=order.getoAddress1() %> <%=order.getoAddress2() %>
+			</td>
+			<td>
+				<%=order.getoDate() %>
+			</td>
+			<td>
+				<% if(order.getoState()==1) {%>
+					주문 확인
+				<% } else if(order.getoState()==2) { %>
+					배송준비
+				<% } else if(order.getoState()==3) { %>
+					배송 중
+				<% } else if(order.getoState()==4) { %>
+					배송 완료
+				<% } %>
+			</td>
+		</tr>
+		<% } %>
+	<% } %>
+</table>
+</div>

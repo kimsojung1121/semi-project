@@ -1,0 +1,181 @@
+<%@page import="dao.ProductDAO"%>
+<%@page import="dto.ProductDTO"%>
+<%@page import="dto.OrdersDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.OrdersDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_check.jspf" %>
+
+<%! int OrderSeq; %>
+
+<%
+	List<OrdersDTO> orderList = OrdersDAO.getDAO().selectTodayOrders(loginUsers.getId());
+	if(orderList.size()==0)
+		System.out.println("orderList가 없습니다.");
+	OrderSeq = 0;
+%>
+
+
+<style type="text/css">
+
+table {
+	border: 1px solid RGB(220,220,220);
+	border-collapse: collapse;
+	border-left-style: none;
+	border-right-style: none;
+	text-align: center;
+}
+
+th {
+	width: 200px;
+	border: 1px solid RGB(220,220,220);
+	border-collapse: collapse;
+}
+
+td {
+	width: 200px;
+	border: 1px solid RGB(220,220,220);
+	border-left-style: none;
+	border-right-style: none;
+	border-collapse: collapse;
+}
+
+.checkBox {
+	width: 500px;
+}
+
+.cart {
+	width: 1500px;
+	margin: 0 auto;
+	font-size: 20px;
+}
+
+#cartTable {
+	font-size: 20px;
+}
+
+#tableBar {
+	background-color: RGB(220,220,220);
+	color: white;
+	height: 45px;
+}
+
+.order {
+	border: 1px solid RGB(220,220,220);
+	height: 60px;
+	width: 150px;
+	font-size: 20px;
+}
+
+#orderAllBtn {
+	background: RGB(254,199,158);
+	color: white;
+}
+
+.orderList {
+	height: 60px;
+	font-size: 15px; 
+	background: RGB(250,250,250);
+}
+
+.orderListVal {
+	height: 20px;
+	text-align: left;
+	margin-right: 50px;
+}
+
+.orderValue {
+	margin-left: 50px;
+}
+
+</style>
+
+<div>
+	<br><br>
+		<div class="cart">
+			<h2 align="center">주문상세 정보</h2>
+		</div>
+		<br><br>
+		
+		<% for(OrdersDTO order : orderList) { %>
+			<%
+			ProductDTO product = ProductDAO.getDAO().selectProductsInfo(order.getpNo());
+			OrderSeq++;
+			%>
+			
+			<div class="cart">
+				<h3 align="center" style="height: 50px;"><%=OrderSeq%></h3>
+			</div>
+			
+			<table class="cart" id="cartTable">
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+
+				<tr>
+					<td class="orderList" colspan="1">주문 번호</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=order.getoNo()%></span></td>
+					
+					<% //System.out.println(order.getoNo()); %>
+				</tr>
+				
+				<tr>
+					<td colspan="1" class="orderList">주문자 ID</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=loginUsers.getId()%></span></td>
+					<% //System.out.println(loginUsers.getId()); %>
+				</tr>
+				
+				<tr>
+					<td colspan="1" class="orderList">주문상품</td>
+					
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=product.getpName()%></span></td>
+					<% //System.out.println(product.getpName()); %>
+				</tr>
+				
+				<tr>
+					<td class="orderList" colspan="1">레터링</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=order.getcLettering()%></span></td>
+					<% //System.out.println(order.getoLettering()); %>
+				</tr>
+				
+				<tr>
+					<td class="orderList" colspan="1">배송지</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue">
+					<%=order.getoAddress1()%>&nbsp;&nbsp;<%=order.getoAddress2() %></span>
+					<% //System.out.println(order.getoAddress2()); %>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="orderList" colspan="1">주문 일자</td>
+					<td class="orderListVal" colspan="4"><span class="orderValue"><%=order.getoDate()%></span></td>
+					<% //System.out.println(order.getoDate()); %>
+				</tr>
+				
+				<tr>
+					<td class="orderList" colspan="1">배송상태</td>
+					<td class="orderListVal" colspan="4">
+						<span class="orderValue">
+						<% int state = order.getoState(); %>
+						<% if(state==1) {%>
+							주문 확인
+						<% } else if(state==2) { %>
+							배송준비
+						<% } else if(state==3) { %>
+							배송 중
+						<% } else if(state==4) { %>
+							배송 완료
+						<% } %>
+						</span>
+					</td>
+				</tr>
+				
+			</table>
+			<br>
+		<% } %>
+</div>

@@ -1,0 +1,614 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<style type="text/css">
+.slider-wrap .slick-slide {
+	overflow:hidden;
+}
+
+.slider-banner-511517418{
+    width:100%;
+}
+
+.slider-banner-511517418 img{
+	max-width: 100%;
+}
+
+.body-main #wrap .slider-banner-511517418 img{max-width:none;}
+
+.slider-banner-511517418 .slick-prev{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23dddddd'%2F%3E%3C%2Fsvg%3E");
+    background:#dddddd\0/IE8;
+}
+
+.slider-banner-511517418 .slick-next{
+    background-image:   url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23dddddd'%2F%3E%3C%2Fsvg%3E");
+    background:#dddddd\0/IE8;
+}
+
+.slider-banner-511517418  .slick-dots li button{
+	width:8px;
+    height:8px;
+
+	border-radius:6px;
+    background:#ffffff;
+	transition:all 0.5s
+}
+
+.slider-banner-511517418 .slick-dots li.slick-active button{
+	background:#ffffff;
+	width:30px;
+	border-radius:6px;
+	transition:all 0.5s
+}
+</style>
+
+<div id="container">
+   <div id="contents">
+   	<div class="sub_content">
+
+<!-- 메인 롤링 빅배너 -->
+<div class="main_visual">
+	<div class="slider-wrap slider-banner-511517418">
+    	<div>
+     		<a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000090"  target="_blank" >
+     		<img src="https://www.ranicake.com/data/skin/front/jeonyul_200918/img/banner/slider_511517418/488f1c3a5a622bf5f8c446e807e853a2_88104.jpg"  alt="본문 슬라이드 배너" title="본문 슬라이드 배너"/>
+     		</a>
+    	</div>
+	    <div>
+	     	<a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000073"  target="_blank" >
+	     	<img src="https://www.ranicake.com/data/skin/front/jeonyul_200918/img/banner/slider_511517418/d164e090baa188f115b3736323cb3c34_23665.jpg"  alt="본문 슬라이드 배너" title="본문 슬라이드 배너"/>
+	     	</a>
+	   	</div>
+	    <div>
+	    	<a href="https://www.ranicake.com/goods/goods_list.php?cateCd=003"  target="_blank" >
+	    	<img src="https://www.ranicake.com/data/skin/front/jeonyul_200918/img/banner/slider_511517418/d164e090baa188f115b3736323cb3c34_11608.jpg"  alt="본문 슬라이드 배너" title="본문 슬라이드 배너"/>
+	    	</a>
+	    </div>
+	    <div>
+	     	<a href="https://www.ranicake.com/goods/goods_list.php?cateCd=005" >
+	   		<img src="https://www.ranicake.com/data/skin/front/jeonyul_200918/img/banner/slider_511517418/e4f7c9c7c780fad7fd32df35615c46ca_24886.jpg"  alt="본문 슬라이드 배너" title="본문 슬라이드 배너"/>
+	    	</a>
+	    </div>
+	    <div>
+	   		<a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000053" >
+	    	<img src="https://www.ranicake.com/data/skin/front/jeonyul_200918/img/banner/slider_511517418/611dd74924e7b11f54252a3b9a48a62b_22773.jpg"  alt="본문 슬라이드 배너" title="본문 슬라이드 배너"/>
+	    	</a>
+	    </div>
+	    <div>
+	     	<a href="https://ranicake.com/goods/goods_view.php?goodsNo=1000000044&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" >]
+	     	<img src="https://www.ranicake.com/data/skin/front/jeonyul_200918/img/banner/slider_511517418/611dd74924e7b11f54252a3b9a48a62b_91558.jpg"  alt="본문 슬라이드 배너" title="본문 슬라이드 배너"/>
+	     	</a>
+	    </div>
+	    <div>
+	     	<a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000030" >
+	     	<img src="https://www.ranicake.com/data/skin/front/jeonyul_200918/img/banner/slider_511517418/611dd74924e7b11f54252a3b9a48a62b_68451.jpg"  alt="본문 슬라이드 배너" title="본문 슬라이드 배너"/>
+	     	</a>
+	    </div>
+	    <div>
+		     <a href="https://www.ranicake.com/goods/goods_list.php" >
+		     <img src="https://www.ranicake.com/data/skin/front/jeonyul_200918/img/banner/slider_511517418/d7c6dca998186d3bd22259088cf47448_44545.jpg"  alt="본문 슬라이드 배너" title="본문 슬라이드 배너"/>
+		     </a>
+		</div>
+	</div>
+	
+<script src="https://www.ranicake.com/data/skin/front/jeonyul_200918/js/slider/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.slider-banner-511517418').not('.slick-initialized').slick({
+            autoplay: true,
+            dots: true,
+            infinite: true,
+            autoplaySpeed :4000,
+            speed:1300,
+            slidesToShow: 1,
+            fade: true,
+            centerMode:true,
+            variableWidth: true,
+            adaptiveHeight: true,
+            draggable : true
+        });
+    });
+</script>
+</div>
+
+
+<!-- 추천 상품 -->
+<div class="goods_list main_wrap_2">
+    <div class="goods_list_tit">
+        <h3>누구에게 선물하시나요?</h3>
+    </div>
+    <div class="goods_list_cont goods_content_2">
+	<div class="tab_goods_2 item_hl_tab_type">
+    <div class="goods_tab_tit">
+        <ul>
+            <li class="on" ><a href="#">#연인 #기념일</a></li>
+            <li class="" ><a href="#">#가족 #스승님</a></li>
+            <li class="" ><a href="#">#생일 #친구 #파티</a></li>
+        </ul>
+    </div>
+    <!-- //goods_tab_tit -->
+    <div class="goods_tab_cont">
+        <div class="goods_tab_box on">
+            <ul>      
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000072&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/21/02/07/1000000072/1000000072_main_09.jpg" width="450" alt="티아라 케이크" title="티아라 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000072&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">티아라 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>30,000원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+                
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000053&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/21/01/01/1000000053/1000000053_main_08.jpg" width="450" alt="포토 케이크" title="포토 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000053&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">포토 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>27,900원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>               
+                
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000025&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/20/06/26/1000000025/1000000025_main_04.jpg" width="450" alt="오로라 레터링 케이크 (퍼플)" title="오로라 레터링 케이크 (퍼플)" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000025&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">오로라 레터링 케이크 (퍼플)</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>25,000원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+                
+                <li>
+
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000052&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/20/12/49/1000000052/1000000052_main_06.jpg" width="450" alt="유어마이스타 케이크" title="유어마이스타 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000052&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">유어 마이스타 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>27,000원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>             
+            </ul>
+        </div>
+        <div class="goods_tab_box ">
+            <ul>
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000087&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/21/04/17/1000000087/1000000087_main_018.jpg" width="450" alt="부모님 감사패 레터링 케이크" title="부모님 감사패 레터링 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000087&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">부모님 감사패 레터링 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span >35,900원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box">
+                                
+                            </div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+                <li >
+
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000091&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/21/07/29/1000000091/1000000091_main_085.jpg" width="450" alt="레트로 블루밍로즈 케이크" title="레트로 블루밍로즈 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000091&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">레트로 블루밍로즈 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span >26,800원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box">
+                                
+                            </div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+                
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000089&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/21/06/22/1000000089/1000000089_main_036.jpg" width="450" alt="민트 초코 케이크" title="민트 초코 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000089&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">민트 초코 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>27,000원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+                             
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000003&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/20/06/26/1000000003/1000000003_main_060.jpg" width="450" alt="제주 당근 케이크" title="제주 당근 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000003&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">제주 당근 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>27,900원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+            </ul>
+        </div>
+        <div class="goods_tab_box ">
+            <ul>
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000023&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/20/06/26/1000000023/1000000023_main_017.jpg" width="450" alt="스마일 케이크" title="스마일 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000023&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">스마일 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>25,000원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+                
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000024&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/20/06/26/1000000024/1000000024_main_057.jpg" width="450" alt="레어 초코 팔레트 레터링 케이크" title="레어 초코 팔레트 레터링 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000024&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">레어 초코 팔레트 레터링 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>25,000원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+          
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000029&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/20/06/26/1000000029/1000000029_main_047.jpg" width="450" alt="해피해피 레터링 케이크" title="해피해피 레터링 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000029&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">해피해피 레터링 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>25,000원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+
+                <li>
+                    <div class="item_cont">
+                        <div class="item_photo_box" >
+                            <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000044&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En" alt="">
+                                <img src="https://www.ranicake.com/data/goods/20/10/42/1000000044/1000000044_main_046.jpg" width="450" alt="레어 치즈 팔레트 레터링 케이크" title="레어 치즈 팔레트 레터링 케이크" class="middle"  />
+                            </a>
+							<span class="price_percent"></span>
+                        </div>
+                        <!-- //item_photo_box -->
+                        <div class="item_info_cont">
+                            <div class="item_tit_box">
+                                <a href="https://www.ranicake.com/goods/goods_view.php?goodsNo=1000000044&amp;mtn=2%5E%7C%5E%EC%96%B8%EC%A0%9C+%EC%84%A0%EB%AC%BC%ED%95%98%EC%8B%9C%EB%82%98%EC%9A%94%3F%5E%7C%5En">
+                                    <p class="item_name">레어 치즈 팔레트 레터링 케이크</p>
+                                </a>
+                            </div>
+                            <!-- //item_tit_box -->
+                            <div class="item_money_box">
+                                <strong class="item_price">
+                                    <span>25,000원 </span>
+                                </strong>
+                            </div>
+                            <!-- //item_money_box -->
+                            <!-- //item_number_box -->
+							<div class="item_icon_box"></div>
+                            <!-- //item_icon_box -->
+                        </div>
+                        <!-- //item_info_cont -->
+                    </div>
+                    <!-- //item_cont -->
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- //goods_tab_cont -->
+</div>
+
+<!-- //item_vl_tab_type -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.tab_goods_2 .goods_tab_tit li').click(function(e){
+            e.preventDefault();
+            $(this).addClass('on').siblings().removeClass('on');	//탭버튼에 on클래스 주기
+//                if ($('.tab_goods_2 .goods_tab_cont > .goods_tab_box').eq($(this).index()).length == 0) {
+//                    $('.tab_goods_2 .goods_tab_cont > .goods_tab_box').removeClass('on');
+//                }
+            $('.tab_goods_2 .goods_tab_cont > .goods_tab_box').eq($(this).index()).addClass('on').siblings().removeClass('on');	//해당 탭 내용 열고 나머지 닫기
+        });
+
+		// 할인율 계산
+		$(".item_cont").each(function(){
+			var $this_del = $(this).find("del").length;
+			var $this_del_price = $(this).find("del").text();
+			if($this_del > 0 && $this_del_price != ""){
+				var del_price1 = $(this).find("del").text().replace("원", "");
+				var del_price2 = del_price1.replace(/,/g, '') * 1;
+				var last_price1 = $(this).find(".item_price").children("span").text().replace("원", "");
+				var last_price2 = last_price1.replace(/,/g, '') * 1;
+				var price_sum = ((last_price2/del_price2)*100)*1;
+				var price_per = Math.round(100-price_sum)+"%"
+				$(this).find(".price_percent").text(price_per);
+			}
+		});
+    });
+</script>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var keyValue2 = '2';
+    var key2 = {
+        html: 'html' + keyValue2,
+        page: 'page' + keyValue2
+    };
+    var gdStorage2 = loadSession(key2.html);
+    var page2 = loadSession(key2.page);
+    $(document).ready(function() {
+        if (gdStorage2) {
+            $('.goods_content_2').html(gdStorage2);
+            if (page2) {
+                $('.main_wrap_2 .btn_goods_view_down_more').attr('data-page',page2);
+            }
+        }
+        $('.main_wrap_2 .btn_goods_view_down_more').on('click', function(e){
+            gd_get_list_2($(this).data('page'));
+        });
+    });
+
+    function gd_get_list_2(page) {
+        $.get('https://www.ranicake.com/goods/goods_main.php', {'mode' : 'get_main', 'more' : page, 'sno' : '2', 'groupSno' : ''}, function (data) {
+            $(".goods_content_2").html(data);
+            saveSession(key2.html, data);
+            if (parseInt(page) + 1 > 1) {
+                $('.main_wrap_2 .btn_goods_view_down_more').hide();
+            } else {
+                saveSession(key2.page, parseInt(page)+1);
+                $('.main_wrap_2 .btn_goods_view_down_more').data('page', parseInt(page) + 1);
+            }
+        });
+    }
+    
+</script>
+
+
+<script type="text/javascript">
+(function(w, d, a){
+    w.__beusablerumclient__ = {
+        load : function(src){
+            var b = d.createElement("script");
+            b.src = src; b.async=true; b.type = "text/javascript";
+            d.getElementsByTagName("head")[0].appendChild(b);
+        }
+    };w.__beusablerumclient__.load(a);
+})(window, document, "//rum.beusable.net/script/b200813e150529u966/7fbab022db");
+</script>
+
+<!-- cre.ma / 리뷰 팝업 / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
+<div class="crema-popup"></div>
+
+<!-- cre.ma / init 스크립트 (PC) / 스크립트를 수정할 경우 연락주세요 (support@cre.ma) -->
+<script>(function(i,s,o,g,r,a,m){if(s.getElementById(g));a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.id=g;a.async=1;a.src=r;m.parentNode.insertBefore(a,m)})(window,document,'script','crema-jssdk','../widgets.cre.ma/ranicake.com/init.js');</script>
+            </div>
+            <!-- //sub_content -->
+        </div>
+        <!-- //본문 끝 contents -->
+    </div>
+    <!-- //container -->

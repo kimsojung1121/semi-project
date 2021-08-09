@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<div id="JD-Footer">
+	<ul class="sns_icon">
+		<!-- 페이스북 -->
+        <li>
+            <a href="#" target="_blank"><i class="xi-facebook-official"></i></a>
+        </li>
+		<!-- 인스타그램 -->
+        <li>
+            <a href="#" target="_blank"><i class="xi-instagram"></i></a>
+        </li>
+	</ul>
+        
+	<ul class="company_menu">
+		<li><a href="#">BRAND</a></li>
+		<li><a href="#">AGREEMENT</a></li>
+		<li><a href="#">PRIVACY POLICY</a></li>
+		<li><a href="#">GUIDE</a></li>
+	</ul>
+	<div class="company">
+        <span>COMPANY : 주식회사 XXXX </span>
+        <span>OWNER : XXX </span>
+        <span>ADDRESS : 서울특별시 서초구 강남대로45길 20 (서주빌딩) 102호</span><br />
+        <span>CALL : 02-512-XXXX / 월~금 10:00~17:00 (점심시간 13~14시)</span>
+		<span>EMAIL : itwill@google.net </span>
+        <span>BUSUNESS LICENSE : XXX-XX-XXXXX</span>
+        <span><a class="btn_biz" href="#" target="_blank"> [사업자정보확인]</a></span>
+        <span>MALL ORDER LICENSE : 제 XXXX-서울서초-XXXX</span>
+        <p class="copyright"><span>COPYRIGHT &copy; 주식회사 XXXX ALL RIGHTS RESERVED.</span></p>
+    </div>
+    
+	<div class="foot_more">
+		<div class="foot_certify">
+			<span></span>
+			<span></span>
+		</div>
+		<!-- //foot_certify -->
+	</div>
+</div>

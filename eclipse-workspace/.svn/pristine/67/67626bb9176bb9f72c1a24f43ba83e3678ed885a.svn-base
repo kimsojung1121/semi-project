@@ -1,0 +1,51 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="dao.OrdersDAO"%>
+<%@page import="dto.OrdersDTO"%>
+<%@page import="dao.CartDAO"%>
+<%@page import="dto.CartDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_check.jspf" %>
+ <%
+ 	String id = request.getParameter("id");
+ 	
+ 	List<CartDTO> cartList = CartDAO.getDAO().selectAllCart(id);
+ 	List<OrdersDTO> orderList = new ArrayList<OrdersDTO>();
+ 	
+ 	for(int i=0; i<cartList.size(); i++) {
+ 		OrdersDTO order = new OrdersDTO();
+ 		order.setId(id);
+ 		order.setpNo(cartList.get(i).getpNo());
+ 		if(request.getParameter("letteringOption"+i).equals("0")) {
+ 			order.setoOption(0);
+ 			order.setoLettering("");
+ 		} else {
+ 			order.setoOption(1);
+	 		order.setoLettering(request.getParameter("letters"+i));	
+ 		}
+ 		order.setoZipcode(request.getParameter("zipcode"+i));
+ 		order.setoAddress1(request.getParameter("address1"+i));
+ 		order.setoAddress2(request.getParameter("address"+i));
+ 		order.setoAmount(1);
+ 		orderList.add(order);
+ 	}
+ %>
+ 
+ <div>
+ 	<h2>주문 정보 확인</h2>
+ 	
+ 	<% for(OrdersDTO order : orderList) { %>
+ 		<p><%=order.getId() %></p>
+ 		<p><%=order.getpNo() %></p>
+ 		<p><%=order.getoOption()%></p>
+ 		<p><%=order.getoLettering() %></p>
+ 		<p><%=order.getoZipcode() %></p>
+ 		<p><%=order.getoAddress1() %></p>
+ 		<p><%=order.getoAddress2() %></p>
+ 		<p><%=order.getoAmount()%></p>
+ 		<p>-------------------------------------------</p>
+ 	<% } %>
+
+ 
+ </div>

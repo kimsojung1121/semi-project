@@ -1,0 +1,67 @@
+.textone {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.texttwo {
+	text-align: left;
+	padding: 20px 20px 20px 20px;
+}
+.texthree {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.textfour {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.textfive {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.tester {
+	text-align: center;
+	margin:30px 0;
+}
+
+#boardSearchForm {
+	text-align: center;
+}
+
+.pageone {
+    display: inline-block;
+    width: 33px;
+    padding: 9px 0;
+    margin: 0 -3px 0 -3px;
+    border: 1px solid #d7d5d5;
+    font-weight: bold;
+    font-size: 12px;
+    color: #939393;
+    line-height: 14px;
+    background: #fff;
+}
+
+.btnone {
+	display: inline-block;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    font-family: "굴림",Gulim;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: middle;
+    word-spacing: -0.5px;
+    letter-spacing: 0;
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+    background-color: #4a5164;
+    width: 96px;
+    
+}
