@@ -8,13 +8,6 @@
 <%@include file="/security/admin_check.jspf"%>
 
 <%
-	//비정상적이 요청에 대한 처리
-	if(request.getParameter("pNo")==null) {
-		out.println("<script type='text/javascript'>");
-		out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=error&work=error400'");
-		out.println("</script>");
-		return;		
-	}
 	
 	//전달값을 반환받아 저장
 	int pNo=Integer.parseInt(request.getParameter("pNo"));

@@ -17,29 +17,27 @@
 	<div id="contents">
 		<div class="sub_content">
 			<div class="join_base_wrap">
-			<jsp:include page="home.jsp"/>
+				<jsp:include page="home.jsp"/>
 			
-			
-				<h2 style="font-size: 24px; margin-top: 20px; margin-bottom: 40px;">나의 상품후기</h2>
+				<h2 style="font-size: 24px; margin-top: 20px; margin-bottom: 40px;" align="center">나의 상품후기</h2>
 				<table class="mypage_table">
 					<tr>
-						<th style="width: 80%;">제목</th>
-						<th style="width: 10%;">조회수</th>
-						<th style="width: 10%;">작성날짜</th>
+						<th style="width: 90%;">제목</th>
+						<th style="width: 20%;">작성날짜</th>
 					</tr>
+					<%-- System.out.println(reviewList); --%>
 					<% if(reviewList==null) { %>
 					<tr>
-					<td colspan="3">작성한 상품후기가 없습니다.</td>
+					<td colspan="2">작성한 상품후기가 없습니다.</td>
 					</tr>
 					<% } else {%>
 						<% for(ReviewDTO review:reviewList) { %>
 							<tr>
 								<td>
-									<a href="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_detail&q_no=<%=review.getR_no()%>">
+									<a href="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_detail&r_no=<%=review.getR_no()%>">
 										<%=review.getR_title() %>
 									</a>
 								</td>
-								<td><%=review.getReadcount() %></td>
 								<td><%=review.getR_date() %></td>
 							</tr>
 						<% } %>

@@ -41,30 +41,15 @@
 		return;
 	}
 %>
-<style type="text/css">
-table {
-	margin: 0 auto;
-	
-}
+<link href="css/qna.css" type="text/css" rel="stylesheet">
 
-th {
-	width: 70px;
-	font-weight: normal;
-}
-
-td {
-	text-align: left;
-	
-}
-#qnaForm {
-     text-align: center;
-}
-</style>
+<div id="qna_modify"></div>
 <br>
    <br>
       <br>
-<h2 align="center">글변경</h2>
+      <h2 align="center" id="title_all">Q&A 변경</h2>
 <br>
+<div id="message" style="color: red;"></div>
    <br>
 <p align="center"><form action="<%=request.getContextPath()%>/home.jsp?workgroup=qna&work=qna_modify_action"
 	method="post" id="qnaForm"></p>
@@ -76,26 +61,25 @@ td {
 		<tr>
 			<th>제목</th>
 			<td>
-				<input type="text" name="q_title" id="title" size="40" value="<%=qna.getQ_title()%>">
-				<input type="checkbox" name="secret" value="1" 
-					<% if(qna.getQ_state()==1) { %>checked="checked"<% } %>>비밀글
+				<input type="text" name="q_title" id="title" size="85" value="<%=qna.getQ_title()%>" style="border: none;">
+				<input type="checkbox" name="secret" value="1"
+					<% if(qna.getQ_state()==1) { %>checked="checked"<% } %>>&nbsp;비밀글
 			</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				<textarea rows="7" cols="60" name="q_content" id="content"><%=qna.getQ_content() %></textarea>
+				<textarea rows="20" cols="100" name="q_content" id="content" ><%=qna.getQ_content() %></textarea>
 			</td>
 		</tr>
-		<tr>
-			<th colspan="2">
-				<button type="submit">글변경</button>
-				<button type="reset" id="resetBtn">다시쓰기</button>
-			</th>
-		</tr>
 	</table>	
+	<div id="savebtn">
+ 			<button type="submit">글변경</button>		
+ 			<button type="reset" id="resetBtn">다시쓰기</button> 
+	</div>
+	
 </form>
-<div id="message" style="color: red;"></div>
+
 
 <script type="text/javascript">
 $("#title").focus();
@@ -119,3 +103,4 @@ $("#resetBtn").click(function() {
 	$("#message").text("");
 });
 </script>
+</div>

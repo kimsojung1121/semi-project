@@ -55,7 +55,7 @@
                     </dl>
                 </div>
                 <div class="btn_center_box">
-                    <a class="btn_pw_cancel js_btn_back" href="<%=request.getContextPath()%>/home.jsp">취소</a>
+                    <a class="btn_pw_cancel js_btn_back" href="<%=request.getContextPath()%>/home.jsp?workgroup=mypage&work=mypage_orders">취소</a>
                     <button type="button" class="btn_pw_certify" id="btnPwCheck">인증하기</button>
                 </div>
             </form>

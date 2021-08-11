@@ -25,7 +25,9 @@
 		id="";
 	} else {
 		session.removeAttribute("id");
-	}
+	} 
+	
+	
 %>
 
 <div id="container">
@@ -45,17 +47,12 @@
 				<div class="member_login_box">					
 					<div class="login_input_sec">
 						<div>
-							<input type="text" id="id" name="id" placeholder="아이디" 
-								value="<%=id%>">	
+							<input type="text" id="id" name="id" placeholder="아이디" value="<%=id%>">	
 							<input type="password" id="pw" name="pw" placeholder="비밀번호">
 						</div>
 						<button type="button" id="btnLogin">LOGIN</button>
 					</div>
-					<div class="id_chk">
-						<span class="form_element">
-							<input type="checkbox" id="saveId" name="saveId"/>
-			                <label for="saveId">아이디 저장</label>
-						</span>
+					<div class="id_chk">											
 						<div id="message" class="error"><%=message %></div>
 					</div>
 				</div>
@@ -95,11 +92,14 @@ $(document).ready(function() {
 		if($("#pw").val()=="") {
 			$("#message").text("비밀번호를 입력해 주세요.");
 			return;
-		}
+		}		
 		
 		$("#formLogin").submit();
 	});
+	
 });
+
+
 
 </script>
             

@@ -19,12 +19,12 @@
 
 	//전달값을 반환받아 저장
 	String pageNum=request.getParameter("pageNum");
-	System.out.println(pageNum);
+	//System.out.println(pageNum);
 	String n_title=Utility.escapeTag(request.getParameter("n_title"));
-	System.out.println(n_title);
+	//System.out.println(n_title);
 	int n_state=0;//전달값이 없는 경우 : 일반글 - 0(초기값)
 	String n_content=Utility.escapeTag(request.getParameter("n_content"));
-	System.out.println(n_content);
+	//System.out.println(n_content);
 	
 
 	int n_seq=NoticeDAO.getDAO().selectNextNotice();

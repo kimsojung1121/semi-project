@@ -277,7 +277,9 @@ public class OrdersDAO extends JdbcDAO {
 	}
 	
 	//메소드 추가 (08/06)
-	//ORDERS 테이블에 저장된 사용자의 오늘 주문한 정보를 검색하여 반환하는 메소드
+	// => ORDERS 테이블에 저장된 사용자의 오늘 주문한 정보를 검색하여 반환하는 메소드
+	//메소드 수정(08/11)
+	// => sql문 수정 (주문번호 내림차순 조건 추가)
 	public List<OrdersDTO> selectTodayOrders(String id) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -286,7 +288,7 @@ public class OrdersDAO extends JdbcDAO {
 		try {
 
 			con=getConnection();
-			String sql="select * from orders where id=? and to_char(o_date) =?";
+			String sql="select * from orders where id=? and to_char(o_date) =? order by o_no desc";
 			pstmt=con.prepareStatement(sql);
 			
 			String date = new SimpleDateFormat("yy/MM/dd").format(new Date());

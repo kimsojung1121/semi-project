@@ -93,6 +93,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script type="text/javascript" src="https://www.ranicake.com/data/skin/front/jeonyul_200918/js/jquery/vticker/jquery.vticker.js?ts=1600409189"></script>
     <script type="text/javascript" src="https://www.ranicake.com/data/skin/front/jeonyul_200918/js/gd_ui.js?ts=1600409189"></script>
 
+
     <script type="text/javascript">
         // 고도몰5 통화정책
         var gdCurrencyDecimal = 0;

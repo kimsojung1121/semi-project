@@ -10,14 +10,8 @@ font-size: 18px;
 .map{
 width: 1000px;
 margin: 0 auto;
-
 }
-
 </style>
-
-
-
-
 
 <div class="content_box">
 	<img src="images/brandphoto.jpg" />
@@ -42,8 +36,8 @@ margin: 0 auto;
 			<ul>
 				<li>
 
-					<div class="item_cont">
-						<div class="item_photo_box">
+					<div class="item_cont" style="border: none;">
+						<div class="item_photo_box" style="border: none;">
 							<a href="home.jsp?workgroup=product&work=cake_detail&pNo=1009"> <img src="images/cake_1009.jpg" width="450"
 								alt="해피해피 케이크" title="해피해피 케이크" class="middle" />
 							</a> <span class="price_percent"></span>
@@ -71,8 +65,8 @@ margin: 0 auto;
 				</li>
 				<li>
 
-					<div class="item_cont">
-						<div class="item_photo_box">
+					<div class="item_cont" style="border: none;">
+						<div class="item_photo_box" style="border: none;">
 							<a href="home.jsp?workgroup=product&work=cake_detail&pNo=1004"> <img src="images/cake_1004.jpg"
 								width="450" alt="마틸다 케이크" title="마틸다 케이크" class="middle" />
 							</a> <span class="price_percent"></span>
@@ -100,8 +94,8 @@ margin: 0 auto;
 				</li>
 				<li>
 
-					<div class="item_cont">
-						<div class="item_photo_box">
+					<div class="item_cont" style="border: none;">
+						<div class="item_photo_box" style="border: none;">
 							<a href="home.jsp?workgroup=product&work=cake_detail&pNo=1001"> <img src="images/cake_1001.jpg"
 								width="450" alt="해변 케이크" title="해변 케이크" class="middle" />
 							</a> <span class="price_percent"></span>
@@ -133,7 +127,7 @@ margin: 0 auto;
 	</div>
 </div>
 <br><br><br><br>
-<h2 style="text-align: center;">찾아오시는길</h2>
+<h1 style="text-align: center;">찾아오시는길</h1>
 <br>
 <br><br>
 <div class="map">

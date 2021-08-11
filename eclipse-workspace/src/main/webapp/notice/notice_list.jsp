@@ -12,16 +12,7 @@
 
 <%
 
-       //검색정보 전달용
-       String search=request.getParameter("search");
-       if(search==null) { //검색을 안해도 무관
-    	    search="";
-       }
-       //키워드 사용
-     	String keyword=request.getParameter("keyword");
-     	if(keyword==null) {
-   		keyword="";
-     	}
+       
 
        //페이징 처리
        //pageNum : 페이지번호 [1][2][3]..
@@ -100,17 +91,17 @@
 	margin: 0 auto;
 }
 #btn button {
-	border: 1px solid black;
-	padding: 3px 5px;
+	border: 1px solid RGB(254,199,158);
+	padding: 6px 20px;
 	border-radius: 10px;
-	background-color: #ccc;
+	background-color: RGB(254,199,158);
 }
 
 table {
 	margin: 5px auto;
 	border: 1px solid pink;
 	border-collapse: collapse;
-	width : 1000px;
+	width : 80%;
 }
 
 th {
@@ -147,6 +138,37 @@ td {
 .container{
 	margin-top: 500px;
 }
+a:link { 
+
+ color: #58595b;
+
+ text-decoration: none;
+
+}
+
+a:visited {
+
+ color: #58595b;
+
+ text-decoration: none;
+
+}
+
+a:hover {
+
+ color: #58595b;
+
+ text-decoration: none;
+
+}
+
+a:active {
+
+ color: #58595b;
+
+ text-decoration: none;
+
+}
 
 </style>
 <br>
@@ -163,12 +185,12 @@ td {
 			<th width="100">번호</th>
 			<th width="500">제목</th>
 			<th width="100">조회수</th>
-			<th width="200" colspan="2">작성날짜</th>
+			<th width="200" >작성날짜</th>
 		</tr>
 		<%--게시글이 하나도 없을 경우--%>
 		<% if(totalNotice==0) { %>
 		<tr>
-			<td colspan="5">검색된 공지사항이 하나도 없습니다.</td>
+			<td colspan="4">검색된 공지사항이 하나도 없습니다.</td>
 		</tr>
 		<% } else { %>
 			<%-- 게시글 목록에서 게시글을 하나씩 제공받아 반복 출력 --%>
@@ -226,29 +248,29 @@ td {
 	
 	
 	
-	<div align="center">
-<%-- 	<% //[처음][이전]...[다음][마지막] + 검색기능(식별자 : 작성자 / 제목 / 내용 포함) --%>
-<%-- 	   if(startPage>blockSize) { %> --%>
-<%-- 		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=noitce_list&pageNum=1&search=<%=search%>&keyword=<%=keyword%>">[처음]</a></p> --%>
-<%-- 		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_list&pageNum=<%=startPage-blockSize%>&search=<%=search%>&keyword=<%=keyword%>">[이전]</a></p> --%>
-<%-- 	<% } else { %> --%>
-<!-- 		[처음][이전] -->
-<%-- 	<% } %> --%>
+<div align="center">
+	<% //[처음][이전]...[다음][마지막] + 검색기능(식별자 : 작성자 / 제목 / 내용 포함)
+	   if(startPage>blockSize) { %> 
+		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_list&pageNum=1">[처음]</a>
+		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_list&pageNum=<%=startPage-blockSize%>">[이전]</a>
+	<% } else { %>
+		[처음][이전]
+	<% } %>
 	
 	<% for(int i=startPage;i<=endPage;i++) { %>
 		<% if(pageNum!=i) { %>
-			<a href="<%=request.getContextPath()%>/home.jsp?workgroup=noitce&work=notice_list&pageNum=<%=i%>&search=<%=search%>&keyword=<%=keyword%>">[<%=i %>]</a>
+			<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_list&pageNum=<%=i%>">[<%=i %>]</a>
 		<% } else { %>
 			[<%=i %>]
 		<% } %>
 	<% } %>
 	
-<%-- 	<% if(endPage!=totalPage) { %> --%>
-<%-- 		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_list&pageNum=<%=startPage+blockSize%>&search=<%=search%>&keyword=<%=keyword%>">[다음]</a> --%>
-<%-- 		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_list&pageNum=<%=totalPage%>&search=<%=search%>&keyword=<%=keyword%>">[마지막]</a> --%>
-<%-- 	<% } else { %> --%>
-<!-- 		[다음][마지막] -->
-<%-- 	<% } %> --%>
+	<% if(endPage!=totalPage) { %>
+		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_list&pageNum=<%=startPage+blockSize%>">[다음]</a>
+		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_list&pageNum=<%=totalPage%>">[마지막]</a>
+	<% } else { %>
+		[다음][마지막]
+	<% } %>
 	
 
 </div>

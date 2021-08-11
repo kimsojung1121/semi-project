@@ -39,29 +39,98 @@
 	}
 %>
 <style type="text/css">
+#title_notice {
+    font-size: 2.5em
+}
+
 table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	width : 1000px;
 	margin: 0 auto;
-	
 }
 
-th {
-	width: 70px;
-	font-weight: normal;
+th, td {
+	border: 1px solid RGB(200,200,200);
+	padding: 0;
+	line-height : 50px;
 }
 
-td {
-	text-align: left;
-	
+th { width: 100px; 
+     background-color: #f7f7f7;
+     font-size: 20px;
 }
-#noticeForm {
-     text-align: center;
+
+td { width: 400px;
+      font-size: 20px;
+ }
+
+#title {
+      font-size: 18px;
+      color: black;    
 }
+
+#savebtn {
+   text-align : center;
+	max-width : 1000px;
+    min-width : 50px;
+	margin: 0 auto;
+	font-size: 50px;
+}
+#savebtn button {
+	border: 1px solid RGB(254,199,158);
+	padding: 6px 20px;
+	border-radius: 10px;
+	background-color: RGB(254,199,158);
+	color: #fff;
+}
+
+#message {
+	text-align: center;
+}
+
+textarea {
+    padding: 5px;
+    color: black;
+    border: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    resize:none;
+    font-size: 16px;
+    
+}
+
+#modifyBtn {
+   text-align : center;
+	max-width : 1000px;
+    min-width : 50px;
+	margin: 0 auto;
+	font-size: 50px;
+}
+#modifyBtn button {
+	border: 1px solid RGB(254,199,158);
+	padding: 6px 20px;
+	border-radius: 10px;
+	background-color: RGB(254,199,158);
+}
+
+#message {
+	text-align: center;
+}
+#title {
+    border: none;
+
+}
+
 </style>
 <br>
    <br>
       <br>
-<h2 align="center">공지사항 수정</h2>
+<h2 align="center" id="title_notice">공지사항 수정</h2>
 <br>
+<div id="message" style="color: red;"></div>
    <br>
 <p align="center"><form action="<%=request.getContextPath()%>/home.jsp?workgroup=notice&work=notice_modify_action"
 	method="post" id="noticeForm">
@@ -71,24 +140,23 @@ td {
 		<tr>
 			<th>제목</th>
 			<td>
-				<input type="text" name="n_title" id="title" size="40" value="<%=notice.getN_title()%>">
+				<input type="text" name="n_title" id="title" size="85" style="width:100%; height:60px; font-size:20px;"  value="<%=notice.getN_title()%>">
 			</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				<textarea rows="7" cols="60" name="n_content" id="content"><%=notice.getN_content() %></textarea>
+				<textarea rows="20" cols="100" name="n_content" id="content"><%=notice.getN_content() %></textarea>
 			</td>
 		</tr>
-		<tr>
-			<th colspan="2">
+	</table>	
+	<div id="savebtn">
 				<button type="submit">글변경</button>
 				<button type="reset" id="resetBtn">다시쓰기</button>
-			</th>
-		</tr>
-	</table>	
+
+</div> 	
 </form>
-<div id="message" style="color: red;"></div>
+
 
 <script type="text/javascript">
 $("#title").focus();

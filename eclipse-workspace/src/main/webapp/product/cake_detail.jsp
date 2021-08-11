@@ -304,6 +304,7 @@ int pNo = Integer.parseInt(request.getParameter("pNo"));
 $("#add_cart").click(function() {
 		<%if(session.getAttribute("loginUsers") == null){%>
 			alert("로그인 사용자만 이용 가능합니다. ");
+			window.location = '<%=request.getContextPath()%>/home.jsp?workgroup=users&work=users_login&state=1';
 			<%}else{%>
 			if(confirm("장바구니에 담으시겠습니까?")) {
 				if($("#rname").val()=="") {

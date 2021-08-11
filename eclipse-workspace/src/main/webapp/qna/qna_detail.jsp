@@ -17,6 +17,7 @@
 	int q_no=Integer.parseInt(request.getParameter("q_no"));
 	String pageNum=request.getParameter("pageNum");
 	
+    //글목록 -> 리스트 페이지로 되돌아가기 위해 선언
 	String search=request.getParameter("search");
 	if (search==null){
 		search ="";
@@ -73,7 +74,7 @@ table {
 }
 
 th, td {
-	border: 1px solid black;
+	border: 1px solid RGB(200,200,200);
 	padding: 5px;
 	line-height : 50px;
 }
@@ -107,10 +108,12 @@ td { width: 400px;
 	font-size: 50px;
 }
 #qna_menu button {
-	border: 1px solid black;
-	padding: 3px 5px;
+	border: 1px solid RGB(254,199,158);
+	padding: 6px 20px;
 	border-radius: 10px;
-	background-color: #ccc;
+	background-color: RGB(254,199,158);
+	color: #fff;
+	font-size: 14px;
 }
 #title_qna {
     font-size: 2.5em

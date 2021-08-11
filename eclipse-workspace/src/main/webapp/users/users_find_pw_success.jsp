@@ -32,6 +32,12 @@
 	
 	//인증 성공 - 세션에 회원정보를 저장
 	session.setAttribute("usersInfo", UsersDAO.getDAO().selectUsersId(id));	
+	
+	
+	//이메일 마스킹 처리
+	String emailPattern="([\\w.])(?:[\\w.]*)(@.*)";
+	String email=(users.getEmail()).replaceAll(emailPattern, "$1****$2");
+	
 %>
 <div id="container">
         <div id="contents">
@@ -51,7 +57,7 @@
 					<div class="login_input">
 						<div class="member_warning" id="member_warning">
 							<input type="checkbox" id="emailCheck">
-								<span class="emailCheck">이메일 인증&nbsp;(<%=users.getEmail() %>)</span>													
+								<span class="emailCheck">이메일 인증&nbsp;(<%=email %>)</span>													
 						</div>
 						<div class="btn_center_box">
 							<button type="button" id="btnFindPw">발송</button>

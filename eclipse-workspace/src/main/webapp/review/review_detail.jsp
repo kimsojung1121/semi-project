@@ -81,7 +81,7 @@ table {
 }
 
 th, td {
-	border: 1px solid black;
+	border: 1px solid RGB(200,200,200);
 	padding: 5px;
 	line-height : 50px;
 }
@@ -115,10 +115,12 @@ td { width: 400px;
 	font-size: 50px;
 }
 #review_menu button {
-	border: 1px solid black;
-	padding: 3px 5px;
+	border: 1px solid RGB(254,199,158);
+	padding: 6px 20px;
 	border-radius: 10px;
-	background-color: #ccc;
+	background-color: RGB(254,199,158);
+	color: #fff;
+	font-size: 14px;
 }
 #title_review {
     font-size: 2.5em

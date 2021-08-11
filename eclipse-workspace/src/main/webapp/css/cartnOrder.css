@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+* {
+	padding: 0 auto;
+	margin: 0;
+}
+
 table {
 	border: 1px solid RGB(220,220,220);
 	border-collapse: collapse;
@@ -27,7 +32,7 @@ td {
 }
 
 .cart {
-	width: 1500px;
+	width: 1200px;
 	margin: 0 auto;
 	font-size: 20px;
 }

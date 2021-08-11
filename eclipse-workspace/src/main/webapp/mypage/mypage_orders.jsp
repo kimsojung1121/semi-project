@@ -86,17 +86,18 @@
 	<div id="contents">
 		<div class="sub_content">
 			<div class="join_base_wrap">
+				
+				<jsp:include page="home.jsp"/>
 			
-			<jsp:include page="home.jsp"/>
-			<div>
 				<br><br>
-					<div class="cart">
-						<h2 align="center">주문 정보</h2>
-					</div>
-					<br><br>
-					
+				<div class="cart">
+					<h2 align="center">주문 정보</h2>
+				</div>
+				<br><br>
+				
+				<div class="cart">
 					<% if(orderList==null) {%>
-						<table class="cart" id="cartTable">
+						<table id="cartTable">
 							<tr height="30px" style="background: RGB(254,199,158);">
 								<th class="colName">구분</th>
 								<th class="colName">주문일자</th>
@@ -119,7 +120,7 @@
 			
 							<br><br>
 							
-							<table class="cart" id="cartTable">
+							<table id="cartTable" style="width: 1500px;">
 								<tr height="30px" style="background: RGB(254,199,158);">
 									<th class="colName">구분</th>
 									<th class="colName">주문일자</th>
@@ -164,7 +165,7 @@
 							</table>
 							
 							<div class="<%=orderSeq%>" style="display: none;" >
-								<table class="cart" id="cartTable">
+								<table id="cartTable" style="width: 1500px;">
 								<tr>
 									<th></th>
 									<th></th>
@@ -247,9 +248,7 @@
 							<% orderSeq++; %>
 						<% } %>
 					<% } %>
-			</div>
-			
-			
+				</div>
 			</div>
 		<!-- //member_cont -->
 		</div>

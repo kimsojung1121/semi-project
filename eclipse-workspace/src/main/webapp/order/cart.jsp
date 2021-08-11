@@ -23,7 +23,7 @@
 
 <link type="text/css" rel="stylesheet" href="css/cartnOrder.css"/>
 
-<div style="margin-top: 100px; text-align: center;">
+<div class="cart" style="text-align: center;">
 	<br>
 	<h1>장바구니</h1>
 	<br><br>
@@ -40,18 +40,16 @@
 </div>
 
 <form name="cartForm" id="cart" method="post" action="<%=request.getContextPath()%>/home.jsp?workgroup=order&work=order">
-	<div style="text-align: center;" class="cart">
-		<table class="cart" id="cartTable">
+	<div class="cart">
+		<table id="cartTable" style="width: 1200px;">
 			<tr id="tableBar">
 				
 				<th>상품/옵션 정보</th>
 				<th>수량</th>
 				<th>레터링 문구</th>
 				<th>상품 금액</th>
-	<!-- 		<th>할인/적립</th> -->
 				<th>합계 금액</th>
 				<th></th>
-				<!-- <th rowspan=" <%--=cart.length()%> --%>">배송비?</th> -->
 			</tr>
 		
 		<% if(cartList==null || cartList.size()==0) { %>
@@ -65,7 +63,7 @@
 			<% ProductsDTO product = ProductsDAO.getDAO().selectProductsInfo(cart.getpNo()); %>
 			<tr>
 				
-				<td class="checkBox">&nbsp;&nbsp;
+				<td class="checkBox">
 					
 
 					<span>

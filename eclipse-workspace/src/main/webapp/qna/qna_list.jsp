@@ -59,6 +59,7 @@
 	   List<QnaDTO> qnaList=QnaDAO.getDAO().selectQna_List(startRow, endRow, search, keyword);
   
       //최신순 게시물을 상위에 노출하기위한 것(게시글 순서에 글번호 계산하여 저장) - 글번호 기준 식별자
+      //글번호
       int number=totalQna-(pageNum-1)*pageSize; // number → 전역변수
   
       //[Session] - 회원 및 관리자에게만 게시글 사용 권한 부여
@@ -83,98 +84,39 @@
 		if(endPage>totalPage) {
 			endPage=totalPage;
 		}
+	    
+	    
+	    //pageNum = 페이지번호
+	    //totalQna = selectQna_Count메소드로 만든 전체 페이지 게시물 노출
+	    //totalPage = 전체 페이지 갯수 (1page~xpage)
+	    //startRow = 게시글 시작 행
+	    //endRow = 게시글 마지막 행
+	    //number = 글번호
+	    //blockSize = 페이지 단위 ex) [1] ~ [5]
+	    //startPage = 시작 페이지 ex) [1] 부터 보이기
+	    //endPage = 마지막 페이지 ex) [x] 마지막 페이지
+	    //qnaList = 시작 ~ 종료 사이의 게시물들
+	    
+	    
 	%>
 <!-- CSS -->
-<style type="text/css">
-#qna_list {
-	width: 1000px;
-	margin: 30px auto;
-	border : 1px solid #ccc;	
-}
-#qna_list button {
-    border: 1px solid black;
-	padding: 3px 20px;
-	border-radius: 10px;
-	background-color: #ccc;
-	margin-left: 50px;
-}
-
-#qna_title {
-	font-size: 2.5em;
-	font-weight: bold;
-}
-
-#btn {
-   text-align : right;
-	max-width : 1000px;
-    min-width : 50px;
-	margin: 0 auto;
-}
-#btn button {
-	border: 1px solid black;
-	padding: 3px 5px;
-	border-radius: 10px;
-	background-color: #ccc;
-}
-
-table {
-	margin: 5px auto;
-	border: 1px solid pink;
-	border-collapse: collapse;
-}
-
-th {
-	border: 1px RGB(254,199,158);
-	background: RGB(254,199,158);
-	color: white;
-}
-
-td {
-	border: 1px solid RGB(254,199,158);
-	text-align: center;
-}
-
-.subject {
-	text-align: left;
-	padding: 5px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-#qna_list a:hover {
-	text-decoration: none;
-	color: blue;
-}
-
-.secret, .remove {
-	background: pink;
-	color: white;
-	font-size: 14px;
-	border: 1px solid pink;
-	border-radius: 4px;
-}
-.container{
-	margin-top: 500px;
-}
-
-</style>
+<link href="css/board.css" type="text/css" rel="stylesheet">
 <br>
-<br>
-<br>
-<br>
-<br>
+   <br>
+      <br>
+         <br>
+             <br>
 <%-- 실질적인 노출 표 + 값 --%>
- <div id="qna_title" align="center">Q&A</div>
-<div id="qna_list" >
+ <div id="board_title" align="center">Q&A</div>
+<div id="board_list" >
 
 	<div>&nbsp;</div>
 	<%-- 게시글 검색 --%>
 	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=qna&work=qna_list" method="post">
 		<!-- select 입력태그에 의해 전달되는 값은 컬럼명과 동일하게 설정 -->
 		<p align="center"><select name="search">
-			<option value="q_writer" selected="selected">&nbsp;작성자&nbsp;</option>
-			<option value="q_title">&nbsp;제목&nbsp;</option>
+			<option value="q_title" selected="selected">&nbsp;제목&nbsp;</option>
+			<option value="q_writer">&nbsp;작성자&nbsp;</option>
 			<option value="q_content">&nbsp;내용&nbsp;</option>
 		</select>
 		<input type="text" name="keyword">

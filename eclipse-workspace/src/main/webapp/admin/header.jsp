@@ -11,13 +11,6 @@
               <li><a href="home.jsp?workgroup=admin&work=users">USERS</a></li>
               <li><a href="home.jsp?workgroup=admin&work=products">PRODUCTS</a></li>
               <li><a href="home.jsp?workgroup=admin&work=orders">ORDER</a></li>
-              <li><a href="#">COMMUNITY</a>
-	              <ul class="sub">
-	                  <li><a href="#">Q&amp;A</a></li>
-	                  <li><a href="#">REVIEW</a></li>
-	                  <li><a href="home.jsp?workgroup=notice&work=notice_list">NOTICE</a></li>
-	              </ul>
-              </li>
             </ul>
 
             <div class="logo">

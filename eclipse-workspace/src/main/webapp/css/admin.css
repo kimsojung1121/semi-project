@@ -76,7 +76,7 @@
 }
 
 .search_user #serchAllBtn {
-	background-color: gray;
+	background-color: #ffc89b;
 }
 .user_table {
 	width: 100%;
@@ -94,15 +94,13 @@
 }
 
 .user_table th {
-	background: gray;
+	background: #ffc89b;
 	color: white;
 }
 
 .mypage_table {
 	width: 85%;
 	border-collapse: collapse;
-	float: right; 
-	display:inline-block;
 }
 
 .mypage_table th,td {
@@ -114,7 +112,7 @@
 }
 
 .mypage_table th {
-	background: gray;
+	background:#ffc89b;
 	color: white;
 }
 
@@ -242,6 +240,10 @@
 	margin: 0 auto;
 	margin-top: 100px;
 	font-size: 1.4em;
+}
+
+.page a {
+	text-decoration: none;	
 }
 
 .page a:hover {

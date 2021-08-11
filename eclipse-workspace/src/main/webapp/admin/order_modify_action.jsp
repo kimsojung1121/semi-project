@@ -7,18 +7,17 @@
 <%@include file="/security/admin_check.jspf"%>
 
 <%
-	/*
-	//비정상적이 요청에 대한 처리
-	if(request.getParameter("oNo")==null) {
+	//비정상적인 요청에 대한 처리
+	if(request.getMethod().equals("GET")) {
 		out.println("<script type='text/javascript'>");
 		out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=error&work=error400'");
 		out.println("</script>");
-		return;		
+		return;
 	}
-	*/
 	
 	//전달값을 반환받아 저장
 	int oNo=Integer.parseInt(request.getParameter("oNo"));
+	String pageNum=request.getParameter("pageNum");
 	String id=request.getParameter("id");
 	int pNo=Integer.parseInt(request.getParameter("pNo"));
 	String cLettering=request.getParameter("cLettering");
@@ -46,6 +45,6 @@
 	
 	//제품정보 상세 출력페이지 이동
 	out.println("<script type='text/javascript'>");
-	out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=admin&work=order_detail&oNo="+oNo+"';");
+	out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=admin&work=order_detail&oNo="+oNo+"&pageNum="+pageNum+"';");
 	out.println("</script>");	
 %>

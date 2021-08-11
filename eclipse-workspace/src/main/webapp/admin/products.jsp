@@ -70,7 +70,7 @@
 		</tr>
 	<% } else { %>
 		<% for(ProductsDTO product:productList) { %>
-		<tr onclick="location.href='<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=product_detail&pNo=<%=product.getpNo() %>'" class="productList">
+		<tr onclick="location.href='<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=product_detail&pNo=<%=product.getpNo() %>&pageNum=<%=pageNum %>'" class="productList">
 			<td>
 				<%=product.getpNo() %>
 			</td>

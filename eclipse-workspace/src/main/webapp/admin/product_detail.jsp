@@ -8,18 +8,17 @@
 <%@include file="/security/admin_check.jspf"%>
 
 <%
-	/*
 	//비정상적이 요청에 대한 처리
-	if(request.getParameter("productNum")==null) {
+	if(request.getParameter("pNo")==null) {
 		out.println("<script type='text/javascript'>");
 		out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=error&work=error400'");
 		out.println("</script>");
-		return;		
+		return;
 	}
-	*/
 
 	//전달값을 반환받아 저장
 	int pNo=Integer.parseInt(request.getParameter("pNo"));
+	String pageNum=request.getParameter("pageNum");
 
 	//제품번호를 전달받아 PRODUCT 테이블에 저장된 해당 제품번호의 제품정보를 검색하여 
 	//반환하는 DAO 클래스의 메소드 호출
@@ -63,7 +62,7 @@
 
 <script type="text/javascript">
 $("#modifyProductBtn").click(function() {
-	location.href="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=product_modify&pNo=<%=product.getpNo() %>";
+	location.href="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=product_modify&pNo=<%=product.getpNo() %>&pageNum=<%=pageNum %>";
 });
 
 $("#removeProductBtn").click(function() {
@@ -73,6 +72,6 @@ $("#removeProductBtn").click(function() {
 });
 
 $("#listBtn").click(function() {
-	location.href="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=products";
+	location.href="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=products&pageNum=<%=pageNum %>";
 });
 </script>

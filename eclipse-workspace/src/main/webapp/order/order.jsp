@@ -46,7 +46,7 @@
 
 <form name="orderForm" id="order" method="post" action="<%=request.getContextPath()%>/home.jsp?workgroup=order&work=order_add_action">
 	<div style="text-align: center;" class="cart">
-		<table class="cart" id="cartTable">
+		<table style="width: 1200px;" id="cartTable">
 			<tr id="tableBar">
 				<th>상품/옵션 정보</th>
 				<th>수량</th>
@@ -147,7 +147,7 @@
 		<div>
 			<h3>주문정보 작성</h3>
 			<br>
-			<table class="cart" id="cartTable">
+			<table style="width: 1200px; id="cartTable">
 			
 				<tr>
 					<th></th>
@@ -215,7 +215,7 @@
 			<br><br>
 			<h3>결제정보</h3>
 			<br>
-			<table class="cart" id="cartTable">
+			<table style="width: 1200px; id="cartTable">
 				<tr>
 					<th></th>
 					<th></th>
@@ -240,7 +240,7 @@
 	
 		<br><br><br>
 		<div id="orderBtn">
-			<button type="submit" class="order" id="payment" onclick="requestPay()">결제하기</button>
+			<button type="button" class="order" id="payment" onclick="requestPay()">결제하기</button>
 		</div>	
 		
 		<div id="message" style="font-size: 15px; color: red; font-weight: bold;"></div>
@@ -265,43 +265,14 @@ $("#letteringYes").click(function() {
 	$("#letters").removeAttr("disabled");
 });
 
-
-
-$("#order").submit(function() {
+$("#payment").click(function() {
 	if(confirm("결제 하시겠습니까?")) {
 		alert("결제 되었습니다.");
-		location.href = "<%=request.getContextPath()%>/home.jsp?workgroup=order&work=order_add_action";
+		order.submit();
+	} else {
+		alert("결제가 취소 되었습니다.");
+		return;
 	}
 });
-
-
-// function requestPay() {
-// 	var IMP = window.IMP; // 생략가능
-// 	IMP.init('imp19968408'); // 가맹점 식별 코드
-// 	IMP.request_pay({ // param
-//         pg: "html5_inicis",
-//         pay_method: "card",
-//         merchant_uid: "ORD20180131-0000011",
-//         name: "노르웨이 회전 의자",
-//         amount: 64900,
-//         buyer_email: "gildong@gmail.com",
-//         buyer_name: "홍길동",
-//         buyer_tel: "010-4242-4242",
-//         buyer_addr: "서울특별시 강남구 신사동",
-//         buyer_postcode: "01181"
-//     }, function (rsp) { // callback
-//         if (rsp.success) {
-//             ...,
-//             // 결제 성공 시 로직,
-//             ...
-//         } else {
-//             ...,
-//             // 결제 실패 시 로직,
-//             ...
-//         }
-//     });
-// }
-
-
 
 </script>

@@ -10,16 +10,13 @@
 <%@include file="/security/admin_check.jspf"%>
 
 <%
-	/*
-	//비정상적이 요청에 대한 처리
-	if(request.getParameter("pNo")==null) {
+	//비정상적인 요청에 대한 처리
+	if(request.getMethod().equals("GET")) {
 		out.println("<script type='text/javascript'>");
 		out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=error&work=error400'");
 		out.println("</script>");
-		return;		
+		return;
 	}
-	*/
-	
 
 	//전달된 파일(제품이미지)을 저장하기 위한 서버 디렉토리의 시스템 경로를 반환받아 저장
 	String saveDirectory=request.getServletContext().getRealPath("/product_image");
@@ -30,6 +27,7 @@
 	
 	//전달값을 반환받아 저장
 	int pNo=Integer.parseInt(multipartRequest.getParameter("pNo"));	
+	String pageNum=request.getParameter("pageNum");
 	String pName=multipartRequest.getParameter("pName");
 	int pPrice=Integer.parseInt(multipartRequest.getParameter("pPrice"));
 	String pImage=multipartRequest.getFilesystemName("pImage");	
@@ -53,6 +51,6 @@
 	
 	//제품정보 상세 출력페이지 이동
 	out.println("<script type='text/javascript'>");
-	out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=admin&work=product_detail&pNo="+pNo+"';");
+	out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=admin&work=product_detail&pNo="+pNo+"&pageNum="+pageNum+"';");
 	out.println("</script>");	
 %>

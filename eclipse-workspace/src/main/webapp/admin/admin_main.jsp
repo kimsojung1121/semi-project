@@ -62,9 +62,9 @@
 						<td>주문확인</td>
 					<% } else if(order.getoState()==2) { %>
 						<td>배송준비</td>
-					<% } else if(order.getoState()==2) { %>
+					<% } else if(order.getoState()==3) { %>
 						<td>배송중</td>
-					<% } else if(order.getoState()==2) { %>
+					<% } else if(order.getoState()==4) { %>
 						<td>배송완료</td>
 					<% } %>
 				</tr>
@@ -163,8 +163,10 @@
 </div>
 
 
+
 <%-- [미구현] --%>
 <%-- Q&A 관리 --%>
+<%-- 
 <div class="baseContent">
 	<div class="summary">
 		<h3 class="summary_h">QnA 관리</h3>
@@ -190,10 +192,11 @@
 		</tr>
 	</table>
 </div>
-
+--%>
 
 <%-- [미구현] --%>
 <%-- 리뷰 관리 --%>
+<%-- 
 <div class="baseContent">
 	<div class="summary">
 		<h3 class="summary_h">리뷰 관리</h3>
@@ -218,10 +221,11 @@
 		</tr>
 	</table>
 </div>
-
+--%>
 
 <%-- [미구현] --%>
 <%-- 공지사항 관리 --%>
+<%-- 
 <div class="baseContent">
 	<div class="summary">
 		<h3 class="summary_h">공지사항 관리</h3>
@@ -246,3 +250,4 @@
 		</tr>
 	</table>
 </div>
+--%>

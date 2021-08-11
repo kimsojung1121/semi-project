@@ -41,31 +41,14 @@
 		return;
 	}
 %>
-<style type="text/css">
-table {
-	margin: 0 auto;
-	
-}
-
-th {
-	width: 70px;
-	font-weight: normal;
-}
-
-td {
-	text-align: left;
-	
-}
-#reviewForm {
-     text-align: center;
-}
-</style>
+<link href="css/review.css" type="text/css" rel="stylesheet">
 <br>
    <br>
       <br>
-<h2 align="center">글변경</h2>
-<br>
-   <br>
+<h2 align="center" id="title_review">Review 변경</h2>
+ <br>
+    <div id="message" style="color: red;"></div>
+     <br>
 <p align="center"><form action="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_modify_action"
 	method="post" id="reviewForm"></p>
 	<input type="hidden" name="r_no" value="<%=r_no%>">	
@@ -76,26 +59,24 @@ td {
 		<tr>
 			<th>제목</th>
 			<td>
-				<input type="text" name="r_title" id="title" size="40" value="<%=reivew.getR_title()%>">
+				<input type="text" name="r_title" id="title" size="85" value="<%=reivew.getR_title()%>" style="border: none;">
 				<input type="checkbox" name="secret" value="1" 
-					<% if(reivew.getR_state()==1) { %>checked="checked"<% } %>>비밀글
+					<% if(reivew.getR_state()==1) { %>checked="checked"<% } %>>&nbsp;비밀글
 			</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				<textarea rows="7" cols="60" name="r_content" id="content"><%=reivew.getR_content() %></textarea>
+				<textarea rows="20" cols="100" name="r_content" id="content" style="border: none;"><%=reivew.getR_content() %></textarea>
 			</td>
 		</tr>
-		<tr>
-			<th colspan="2">
-				<button type="submit">글변경</button>
-				<button type="reset" id="resetBtn">다시쓰기</button>
-			</th>
-		</tr>
-	</table>	
+	</table>
+	<div id="savebtn">
+		<button type="submit">글변경</button>
+		<button type="reset" id="resetBtn">다시쓰기</button>
+	</div>
+		
 </form>
-<div id="message" style="color: red;"></div>
 
 <script type="text/javascript">
 $("#title").focus();

@@ -23,38 +23,7 @@
 	}
 %>
 
-<style type="text/css">
-#review_title {
-	font-size: 2.5em;
-	font-weight: bold;
-}
-
-table {
-	margin: 0 auto;
-}
-
-th {
-	width: 70px;
-	font-weight: normal;
-	font-size: 18px;
-}
-
-td {
-	text-align: left;
-}
-#btn {
-   text-align : right;
-	max-width : 1000px;
-    min-width : 50px;
-	margin: 0 auto;
-}
-#btn button {
-	border: 1px solid black;
-	padding: 3px 5px;
-	border-radius: 10px;
-	background-color: #ccc;
-}
-</style>
+<link href="css/review.css" type="text/css" rel="stylesheet">
 <% if(ref.equals("0")) {//ref값이 0일 경우 : 새글쓰기 %>
 <br>
   <br>
@@ -62,7 +31,7 @@ td {
       <br>
          <br>
            <br>
-<div align="center" id="review_title">상품후기 글쓰기</div>
+<div align="center" id="title_review">상품후기 글쓰기</div>
 <br>
 <br>
 <br>
@@ -70,7 +39,7 @@ td {
 <br>
   <br>
     <br>
-<div align="center" id="review_title">답글 쓰기</div>
+<div align="center" id="title_review">답글 쓰기</div>
 <% } %>
   <br>
     <br>
@@ -83,26 +52,22 @@ td {
 	<table>
 		<tr>
 			<th>제목</th>
-			<td>
-				<input type="text" name="r_title" id="title" size="40">
-				<input type="checkbox" name="secret" value="1">&nbsp;&nbsp;비밀글
+			<td>	    
+				<input type="text" name="r_title" id="title" size="85" style="border: none;">
+				<input type="checkbox" name="secret" value="1">&nbsp;비밀글
 			</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				<textarea rows="7" cols="60" name="r_content" id="content"></textarea>
+				<textarea rows="20" cols="100" name="r_content" id="content"></textarea>
 			</td>
 		</tr>
-		<tr>
-			<th colspan="2">
-			<div id="btn">
+	</table>	
+			<div id="savebtn">
 				<button type="submit">글저장</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset" id="resetBtn">다시쓰기</button>
 		   </div>
-			</th>
-		</tr>
-	</table>	
 	
 </form>
 <div id="message" style="color: red;"></div>

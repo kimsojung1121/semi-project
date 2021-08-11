@@ -140,7 +140,7 @@
 	<div class="page" align="center">
 		
 		<% for(int i=startPage;i<=endPage;i++) { %>
-				<a href="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=users&pageNum=<%=i%>&searchId=<%=searchId%>&searchId=<%=searchName%>">
+				<a href="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=users&pageNum=<%=i%>&searchId=<%=searchId%>&searchName=<%=searchName%>">
 					<span><%=i %></span>
 				</a>
 		<% } %>

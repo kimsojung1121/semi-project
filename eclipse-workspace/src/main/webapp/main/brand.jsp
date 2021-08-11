@@ -13,7 +13,7 @@ font-size: 15px;
 	<div class="company_bnn"><img src="images/brandtop.jpg"  alt="BRAND 상단 배너" title="BRAND 상단 배너"   /></div>
     <div class="img_top"><img src="images/brandlogo.png"  alt="BRAND 로고" title="BRAND 로고"  style="margin-top: 10px"  /></div>
     <div class="company_textbox">
-        <span class="lead"> IMO CKAE는 2021년부터 운영해 온 레터링케이크 전문점으로<br> 당신의
+        <span class="lead"> IMO CAKE는 2021년부터 운영해 온 레터링케이크 전문점으로<br> 당신의
 	특별한 날을 더욱 돋보이게 해줄 <br> ‘나를 행복하게 만드는 케이크’를 만들어 드립니다.<br> 
 	<br>  5명의 전문 파티쉐가 국산재료를 가지고 <br> 다양한 영역의 레터링케이크들을 선보이며, <br> 더욱 맛있고 예쁜
 	케이크를 만들기 위해 연구해왔습니다.<br> <br> 이아윌티 디자인케이크클래스부터, 슈크레 일프루슈라센 졸업까지<br>

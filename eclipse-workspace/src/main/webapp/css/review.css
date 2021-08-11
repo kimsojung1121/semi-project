@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 
-div #title_all {
-    font-size: 2.5em
+div #title_review{
+   font-size: 2.5em
 }
 
 table {
@@ -26,13 +26,11 @@ th { width: 100px;
 td { width: 400px;
       font-size: 15px;
  }
- 
+
 #title {
       font-size: 18px;
-      color: black;
+      color: black;    
 }
-
-
 
 #savebtn {
    text-align : center;
@@ -63,6 +61,7 @@ textarea {
     width: 100%;
     resize:none;
     font-size: 16px;
+    
 }
 
 input[type="checkbox"] {
@@ -71,3 +70,4 @@ input[type="checkbox"] {
     vertical-align: middle;
     margin-left: 60px;
 }
+ 

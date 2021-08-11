@@ -34,12 +34,12 @@
             <div class="sub_content">
                 <div class="side_cont">
 <div class="sub_menu_box">
-    <h2>MYSHOP</h2>
+    <h2>MYPAGE</h2>
     <ul class="sub_menu_mypage">
         <li>쇼핑정보
             <ul class="sub_depth1">
-                <li><a href="../mypage/order_list.php">- 주문목록/배송조회</a></li>
-                <li><a href="../mypage/wish_list.php">- 장바구니</a></li>
+                <li><a href="<%=request.getContextPath()%>/home.jsp?workgroup=mypage&work=mypage_orders">- 주문목록/배송조회</a></li>
+                <li><a href="<%=request.getContextPath()%>/home.jsp?workgroup=mypage&work=mypage_cart">- 장바구니</a></li>
             </ul>
         </li>
         <li>회원정보
@@ -48,8 +48,8 @@
                 <li><a href="<%=request.getContextPath() %>/home.jsp?workgroup=users&work=pw_confirm&action=delete">- 회원 탈퇴</a></li>
             </ul>
         </li>
-        <li><a href="../mypage/mypage_goods_qa.php">나의 Q&amp;A</a></li>
-        <li><a href="../mypage/mypage_goods_review.php">나의 상품후기</a></li>       
+        <li><a href="<%=request.getContextPath() %>/home.jsp?workgroup=mypage&work=mypage_qna">나의 Q&amp;A</a></li>
+        <li><a href="<%=request.getContextPath() %>/home.jsp?workgroup=mypage&work=mypage_review">나의 상품후기</a></li>       
     </ul>
 </div>
 <!-- //sub_menu_box -->
@@ -138,7 +138,7 @@
             <!-- //hack_out -->
 
             <div class="btn_center_box">
-                <a href="#" id="btnCancel" class="btn_claim_cancel btn_prev">이전으로</a>
+                <a href="<%=request.getContextPath()%>/home.jsp?workgroup=mypage&work=mypage_orders" id="btnCancel" class="btnCancel">취소</a>
                 <button type="button" id="btnDelete" class="btn_claim_ok" onclick="check();">탈퇴하기</button>
             </div>
         </form>

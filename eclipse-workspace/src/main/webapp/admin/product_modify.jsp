@@ -17,6 +17,7 @@
 
 	//전달값을 반환받아 저장
 	int pNo=Integer.parseInt(request.getParameter("pNo"));
+	String pageNum=request.getParameter("pageNum");
 
 	//제품번호를 전달받아 PRODUCT 테이블에 저장된 해당 제품번호의 제품정보를 검색하여 
 	//반환하는 DAO 클래스의 메소드 호출
@@ -28,11 +29,11 @@
 
 
 <div class="baseContent">
-	<h2>제품변경</h2>
+	<h2>상품변경</h2>
 	
 	<%-- 파일을 입력받아 전달하기 위해 form 태그의 method 속성값을 [post]로 설정하고 
 	enctype 속성값을 [multipart/form-data]로 설정 --%>
-	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=product_modify_action"
+	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=product_modify_action&pageNum=<%=pageNum %>"
 		method="post" enctype="multipart/form-data" id="productForm">
 		<input type="hidden" name="pNo" value="<%=product.getpNo()%>">
 		<%-- 제품이미지를 변경하지 않을 경우 기존 제품이미지를 사용하기 위해 전달하거나

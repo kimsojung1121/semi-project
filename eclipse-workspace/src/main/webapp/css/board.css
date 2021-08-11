@@ -1,0 +1,74 @@
+@charset "UTF-8";
+#board_list {
+	width: 80%;
+	margin: 30px auto;
+	border : 1px solid RGB(254,199,158);	
+}
+#board_list button {
+    border: 1px solid RGB(254,199,158);
+	padding: 6px 20px;
+	border-radius: 10px;
+	background-color: RGB(254,199,158);
+	
+	margin-left: 50px;
+}
+
+#board_title {
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+#btn {
+   text-align : right;
+	max-width : 1000px;
+    min-width : 50px;
+	margin: 0 auto;
+}
+#btn button {
+	border: 1px solid RGB(254,199,158);
+	padding: 6px 20px;
+	border-radius: 10px;
+	background-color: RGB(254,199,158);
+}
+
+table {
+	width : 80%;
+	margin: 5px auto;
+	border: 1px solid pink;
+	border-collapse: collapse;
+}
+
+th {
+	border: 1px RGB(254,199,158);
+	background: RGB(254,199,158);
+	color: white;
+}
+
+td {
+	border: 1px solid RGB(254,199,158);
+	text-align: center;
+}
+
+.subject {
+	text-align: left;
+	padding: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#board_list a:hover {
+	text-decoration: none;
+	color: blue;
+}
+
+.secret, .remove {
+	background: pink;
+	color: white;
+	font-size: 14px;
+	border: 1px solid pink;
+	border-radius: 4px;
+}
+.container{
+	margin-top: 500px;
+}

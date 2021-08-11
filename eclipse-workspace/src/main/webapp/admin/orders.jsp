@@ -105,7 +105,7 @@
 		</tr>
 	<% } else { %>
 		<% for(OrdersDTO order:orderList) { %>
-		<tr onclick="location.href='<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=order_detail&oNo=<%=order.getoNo() %>'" class="productList">
+		<tr onclick="location.href='<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=order_detail&oNo=<%=order.getoNo() %>&pageNum=<%=pageNum %>'" class="productList">
 			<td>
 				<%=order.getoNo() %>
 			</td>

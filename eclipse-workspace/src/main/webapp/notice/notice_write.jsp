@@ -17,30 +17,70 @@
 	font-weight: bold;
 }
 
+
 table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	width : 1000px;
 	margin: 0 auto;
 }
 
-th {
-	width: 70px;
-	font-weight: normal;
-	font-size: 18px;
+th, td {
+	border: 1px solid RGB(200,200,200);
+	padding: 0;
+	line-height : 50px;
 }
 
-td {
-	text-align: left;
+th { width: 100px; 
+     background-color: #f7f7f7;
+     font-size: 20px;
 }
-#btn {
-   text-align : right;
+
+td { width: 400px;
+      font-size: 15px;
+ }
+
+#title {
+      font-size: 18px;
+      color: black;
+      
+}
+#savebtn {
+   text-align : center;
 	max-width : 1000px;
     min-width : 50px;
 	margin: 0 auto;
+	font-size: 50px;
 }
-#btn button {
-	border: 1px solid black;
-	padding: 3px 5px;
+#savebtn button {
+	border: 1px solid RGB(254,199,158);
+	padding: 6px 20px;
 	border-radius: 10px;
-	background-color: #ccc;
+	background-color: RGB(254,199,158);
+	color: #fff;
+}
+
+#message {
+	text-align: center;
+}
+
+textarea {
+    padding: 5px;
+    color: black;
+    border: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    resize:none;
+    font-size: 16px;
+}
+
+input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    vertical-align: middle;
+    margin-left: 60px;
 }
 </style>
 <br>
@@ -61,24 +101,20 @@ td {
 		<tr>
 			<th>제목</th>
 			<td>
-				<input type="text" name="n_title" id="title" size="40">
+				<input type="text" name="n_title" id="title" size="85" style="border: none;">
 			</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				<textarea rows="7" cols="60" name="n_content" id="content"></textarea>
+				<textarea rows="20" cols="100" name="n_content" id="content"></textarea>
 			</td>
 		</tr>
-		<tr>
-			<th colspan="2">
-			<div id="btn">
+	</table>	
+			<div id="savebtn">
 				<button type="submit">글저장</button>&nbsp;&nbsp;&nbsp;
 				<button type="reset" id="resetBtn">다시쓰기</button>
 			</div>
-			</th>
-		</tr>
-	</table>	
 	
 </form>
 <div id="message" style="color: red;"></div>

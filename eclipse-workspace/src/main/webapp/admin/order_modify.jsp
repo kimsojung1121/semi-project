@@ -17,6 +17,7 @@
 
 	//전달값을 반환받아 저장
 	int oNo=Integer.parseInt(request.getParameter("oNo"));
+	String pageNum=request.getParameter("pageNum");
 
 	//주문정보를 전달받아 ORDERS 테이블에 저장된 해당 주문번호의 주문정보를 검색하여 
 	//반환하는 DAO 클래스의 메소드 호출
@@ -72,7 +73,7 @@ td span {
 <div class="baseContent">
 	<h2>주문변경</h2>
 	
-	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=order_modify_action" method="post" id="orderForm">
+	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=admin&work=order_modify_action&pageNum=<%=pageNum %>" method="post" id="orderForm">
 		<table class="cart" id="cartTable">
 			<tr>
 				<th></th>
@@ -174,7 +175,17 @@ td span {
 			<tr>
 				<td colspan="1" height="60px" style="font-size: 15px; background: RGB(250,250,250);">주문상태</td>
 				<td height="20px;" colspan="4"  align="left">
-					<input type="text" name="oState" id="oState" maxlength="20" value="<%=order.getoState()%>" style="width: 30%">
+					<input type="text" name="oState" id="oState" maxlength="20" value="<%=order.getoState()%>" style="width: 5%" readonly>
+					
+					<% if(order.getoState()==1) { %>
+						<input type="text" name="oStateName" id="oStateName" maxlength="20" value="주문확인" style="width: 30%" readonly>						
+					<% } else if(order.getoState()==2) { %>
+						<input type="text" name="oStateName" id="oStateName" maxlength="20" value="배송준비" style="width: 30%" readonly>						
+					<% } else if(order.getoState()==3) { %>
+						<input type="text" name="oStateName" id="oStateName" maxlength="20" value="배송중" style="width: 30%" readonly>						
+					<% } else if(order.getoState()==4) { %>
+						<input type="text" name="oStateName" id="oStateName" maxlength="20" value="배송완료" style="width: 30%" readonly>						
+					<% } %>
 					<select name="oState" style="float:left; display:inline-block;">
 						<option value="1">&nbsp;주문확인&nbsp;</option>
 						<option value="2">&nbsp;배송준비&nbsp;</option>
@@ -196,15 +207,19 @@ $('select[name=oState]').change(function() {
 
 	if($(this).val()=="1"){
 		$('#oState').val(1);
+		$('#oStateName').val("주문확인");
 
 	} else if($(this).val()=="2"){
 		$('#oState').val(2);
+		$('#oStateName').val("배송준비");
 
 	} else if($(this).val()=="3"){
 		$('#oState').val(3);
+		$('#oStateName').val("배송중");
 
 	} else if($(this).val()=="4"){
 		$('#oState').val(4);
+		$('#oStateName').val("배송완료");
 
 	}
 

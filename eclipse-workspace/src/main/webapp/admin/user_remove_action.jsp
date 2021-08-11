@@ -17,6 +17,8 @@
 	//체크박스에 의해 선택되어 전달된 값들을 반환받아 저장 
 	// => 하나의 이름으로 여러 개의 값이 전달되므로 getParameterValues() 메소드 호출  
 	String[] checkId=request.getParameterValues("checkId");
+	System.out.println("size = "+checkId.length);
+	
 	
 	//배열에 저장된 요소값(아이디)를 반복적으로 제공받아 삭제 처리
 	for(String id:checkId) {
@@ -26,6 +28,6 @@
 	
 	//회원목록 출력페이지 이동
 	out.println("<script type='text/javascript'>");
-	out.println("location.href='"+request.getContextPath()+"home.jsp?workgroup=admin&work=users';");
+	out.println("location.href='"+request.getContextPath()+"/home.jsp?workgroup=admin&work=users';");
 	out.println("</script>");
 %>

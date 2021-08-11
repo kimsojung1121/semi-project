@@ -84,96 +84,23 @@
 		}
 	%>
 <!-- CSS -->
-<style type="text/css">
-#review_list {
-	width: 1000px;
-	margin: 30px auto;
-	border : 1px solid #ccc;	
-}
-#review_list button {
-    border: 1px solid black;
-	padding: 3px 20px;
-	border-radius: 10px;
-	background-color: #ccc;
-	margin-left: 50px;
-}
-
-#review_title {
-	font-size: 2.5em;
-	font-weight: bold;
-}
-
-#btn {
-   text-align : right;
-	max-width : 1000px;
-    min-width : 50px;
-	margin: 0 auto;
-}
-#btn button {
-	border: 1px solid black;
-	padding: 3px 5px;
-	border-radius: 10px;
-	background-color: #ccc;
-}
-
-table {
-	margin: 5px auto;
-	border: 1px solid pink;
-	border-collapse: collapse;
-}
-
-th {
-	border: 1px RGB(254,199,158);
-	background: RGB(254,199,158);
-	color: white;
-}
-
-td {
-	border: 1px solid RGB(254,199,158);
-	text-align: center;
-}
-
-.subject {
-	text-align: left;
-	padding: 5px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-#review_list a:hover {
-	text-decoration: none;
-	color: blue;
-}
-
-.secret, .remove {
-	background: pink;
-	color: white;
-	font-size: 14px;
-	border: 1px solid pink;
-	border-radius: 4px;
-}
-.container{
-	margin-top: 500px;
-}
-
-</style>
+<link href="css/board.css" type="text/css" rel="stylesheet">
 <br>
    <br>
       <br>
         <br>
           <br>
 <%-- 실질적인 노출 표 + 값 --%>
- <div id="review_title" align="center">상품 후기</div>
-<div id="review_list" >
+ <div id="board_title" align="center">상품 후기</div>
+<div id="board_list" >
    
 	<div>&nbsp;</div>
 	<%-- 게시글 검색 --%>
 	<form action="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_list" method="post">
 		<!-- select 입력태그에 의해 전달되는 값은 컬럼명과 동일하게 설정 -->
 		<p align="center"><select name="search">
-			<option value="r_writer" selected="selected">&nbsp;작성자&nbsp;</option>
-			<option value="r_title">&nbsp;제목&nbsp;</option>
+			<option value="r_writer">&nbsp;작성자&nbsp;</option>
+			<option value="r_title" selected="selected">&nbsp;제목&nbsp;</option>
 			<option value="r_content">&nbsp;내용&nbsp;</option>
 		</select>
 		<input type="text" name="keyword">
@@ -257,21 +184,22 @@ td {
 	<br>
 	
 	  <%--글쓰기 버튼--%>
-   <% if(loginUsers != null && loginUsers.getStatus() ==9) {//로그인 사용자인 경우에만 버튼이 보이게함 / 비회원은 버튼이 안보이게함 %>
+   <% if(loginUsers != null) {//로그인 사용자인 경우에만 버튼이 보이게함 / 비회원은 버튼이 안보이게함 %>
    <div id="btn">
    <button type="button" onclick="location.href='<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_write';">
    글쓰기</button>
 	</div>
 	<% } %>
 	
+	
 	<div align="center">
-<%-- 	<% //[처음][이전]...[다음][마지막] + 검색기능(식별자 : 작성자 / 제목 / 내용 포함) --%>
-<%-- 	   if(startPage>blockSize) { %> --%>
-<%-- 		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_list&pageNum=1&search=<%=search%>&keyword=<%=keyword%>">[처음]</a></p> --%>
-<%-- 		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_list&pageNum=<%=startPage-blockSize%>&search=<%=search%>&keyword=<%=keyword%>">[이전]</a></p> --%>
-<%-- 	<% } else { %> --%>
-<!-- 		[처음][이전] -->
-<%-- 	<% } %> --%>
+	<% //[처음][이전]...[다음][마지막] + 검색기능(식별자 : 작성자 / 제목 / 내용 포함)
+	   if(startPage>blockSize) { %> 76i
+		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=qna&work=review_list&pageNum=1&search=<%=search%>&keyword=<%=keyword%>">[처음]</a>
+		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=qna&work=review_list&pageNum=<%=startPage-blockSize%>&search=<%=search%>&keyword=<%=keyword%>">[이전]</a>
+	<% } else { %>
+		[처음][이전]
+	<% } %>
 	
 	<% for(int i=startPage;i<=endPage;i++) { %>
 		<% if(pageNum!=i) { %>
@@ -281,12 +209,12 @@ td {
 		<% } %>
 	<% } %>
 	
-<%-- 	<% if(endPage!=totalPage) { %> --%>
-<%-- 		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_list&pageNum=<%=startPage+blockSize%>&search=<%=search%>&keyword=<%=keyword%>">[다음]</a> --%>
-<%-- 		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_list&pageNum=<%=totalPage%>&search=<%=search%>&keyword=<%=keyword%>">[마지막]</a> --%>
-<%-- 	<% } else { %> --%>
-<!-- 		[다음][마지막] -->
-<%-- 	<% } %> --%>
+	<% if(endPage!=totalPage) { %>
+		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_list&pageNum=<%=startPage+blockSize%>&search=<%=search%>&keyword=<%=keyword%>">[다음]</a>
+		<a href="<%=request.getContextPath()%>/home.jsp?workgroup=review&work=review_list&pageNum=<%=totalPage%>&search=<%=search%>&keyword=<%=keyword%>">[마지막]</a>
+	<% } else { %>
+		[다음][마지막]
+	<% } %>
 	
 
 </div>

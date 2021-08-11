@@ -116,7 +116,7 @@ public class QnaDAO extends JdbcDAO {
 			con = getConnection();
 			// String sql = "select q_no,q_title,q_content,q_date,q_state from qna where
 			// id=? order by q_date desc";
-			String sql = "select * from qna where id=? order by q_date desc";
+			String sql = "select * from qna where id=? and q_state!=9 order by q_date desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 

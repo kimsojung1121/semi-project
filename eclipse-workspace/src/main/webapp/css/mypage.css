@@ -244,6 +244,22 @@
 .hack_out .mypage_unregister .unregister_info{margin:0 0 40px 0; padding:15px 15px 15px 15px; color:#717171; border:1px solid #dadada;}
 .hack_out .mypage_unregister .hack_out_list li{float:left; width:35%; padding:0 0 7px 0;}
 .hack_out .mypage_unregister textarea{width:98%; height:100px;}
+.btnCancel {
+    display: inline-block;
+    min-width: 80px;
+    height: 42px;
+    padding: 0 10px 0 10px;
+    line-height: 40px;
+    color: #3e3d3c;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    text-align: center;
+}
+.content{
+	margin-left: 250px;
+	margin-top: 50px;
+}
 
 /* ------------- 마이페이지 > 배송지 관리 ------------- */
 .mypage_shipping{position:relative;}
