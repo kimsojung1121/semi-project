@@ -26,3 +26,5 @@
 
 - 담당 업무
   - 마이페이지, 관리자 페이지
+
+- [프로젝트 소스](https://github.com/kimsojung1121/semi-project/tree/master/eclipse-workspace)
